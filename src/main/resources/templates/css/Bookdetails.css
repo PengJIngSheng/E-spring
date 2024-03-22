@@ -1,0 +1,512 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmWUlfBBc4.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+body {
+    margin: 0;
+}
+
+.Banner {
+    display: flex;
+    height: 150px;
+    justify-content: center;
+    align-items: center;
+}
+
+.Banner .Nav {
+    position: relative;
+    width: 1133px;
+    height: 150.5px;
+    display: flex;
+    align-items: center;
+}
+
+.Banner .Nav .Sub-Nav {
+    position: relative;
+    left: 116.35px;
+    display: flex;
+    width: 776.48px;
+    padding: 10px 22px;
+    align-items: flex-start;
+    gap: 46.69px;
+}
+
+.Banner .Nav .Sub-Nav a {
+    text-decoration: none;
+}
+
+.Banner .Nav .Sub-Nav p {
+    position: relative;
+    display: inline-block;
+    color: #000;
+    font-size: 12px;
+    font-family: 'Studio Pro', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 18px;
+    letter-spacing: 1.08px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.Banner .Nav .Sub-Nav p::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2.5px;
+    background-color: #000;
+    bottom: -3px;
+    left: 0;
+    transition: transform 0.3s ease-in-out;
+    transform-origin: center;
+    transform: scaleX(0);
+}
+
+.Banner .Nav .Sub-Nav p:hover::before {
+    transform: scaleX(1);
+}
+
+.Banner .Nav .Icon-Nav {
+    position: absolute;
+    top: 50%;
+    right: 19px;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    transform: translateY(-50%);
+}
+
+.Banner .Nav #logo {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -44px;
+    width: 115px;
+    height: 115px;
+    flex-shrink: 0;
+    filter: drop-shadow(7px 7px 5px #797979);
+}
+
+/*End of banner*/
+/*Starting of the Product-image part*/
+
+.Keeper {
+    position: relative;
+    top: 36px;
+    display: flex;
+    width: 1660px;
+    height: 100vh;
+    padding: 0px 11px;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 200px;
+}
+
+.Keeper .Product-image {
+    position: relative;
+    margin-top: 20px;
+    margin-left: 53px;
+    width: 682px;
+    height: 735px;
+    flex-shrink: 0;
+    align-self: center;
+}
+
+.Product-image p {
+    color: #000;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 42px;
+}
+
+.Product-image .p1 {
+    position: relative;
+    top: 697px;
+    margin-left: 614px;
+    font-size: 28px;
+}
+
+.Product-image .p2 {
+    position: relative;
+    top: 630.5px;
+    margin-left: 651px;
+    font-size: 14px;
+}
+
+.Product-image .p3 {
+    position: relative;
+    top: 575px;
+    margin-left: 660px;
+    font-size: 14px;
+}
+
+.Product-image img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 452px;
+    height: 735px;
+    flex-shrink: 0;
+    z-index: 1;
+}
+
+.Product-image .Left-button {
+    position: absolute;
+    left: 7px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.Product-image .Right-button {
+    position: absolute;
+    right: 7px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.Product-image .Left-button button,
+.Product-image .Right-button button {
+    width: 33px;
+    height: 33px;
+    background-color: black;
+    border: 1px solid #737373;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    color: white;
+}
+
+/*Starts the Product-info*/
+.Keeper .Product-info {
+    position: relative;
+    width: 713px;
+    height: 1021px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column; /* 修改这里 */
+    align-items: flex-start; /* 修改这里 */
+}
+
+.Keeper .Product-info > * {
+    flex: 1; /* 添加这一行 */
+}
+
+.Product-info .Bookinfo {
+    width: 435px;
+    height: 170px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    flex: 1; /* 添加这一行 */
+}
+
+.Bookinfo .Name {
+    color: #1B1B1D;
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1; /* 修改这里，设置为1即可取消行高 */
+    letter-spacing: 2.94px;
+}
+
+.Bookinfo .About {
+    position: relative;
+    top: 6px;
+    margin-top: -30px; /* 添加这一行，通过负的margin来消除上方的间距 */
+    color: #6f75ff;
+    font-family: 'Yu Gothic', serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1; /* 修改这里，设置为1即可取消行高 */
+    letter-spacing: -0.4px;
+}
+
+.Bookinfo .Type {
+    position: relative;
+    margin-top: 22.34px;
+    color: #000;
+    font-family: 'Roboto', serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: lighter;
+    line-height: 1px; /* 150% */
+    letter-spacing: 0.6px;
+}
+
+.Bookinfo .Price {
+    position: relative;
+    margin-top: 50px;
+    color: #1B1B1D;
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1px; /* 150% */
+    letter-spacing: -0.6px;
+}
+
+.Bookinfo span {
+    position: relative;
+    margin-left: 11px;
+    top: -0.6px;
+    color: #141414;
+    font-family: 'Yu Gothic', serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1px; /* 150% */
+    letter-spacing: 0.624px;
+}
+
+.Bookinfo .s1 {
+    text-decoration: underline;
+}
+
+.Product-info .desc {
+    position: relative;
+    margin-top: -340px;
+    width: 468px;
+    height: 300px;
+}
+
+.Product-info .desc p {
+    color: #141414;
+    font-family: 'Yu Gothic', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 27.2px; /* 170% */
+    letter-spacing: 0.768px;
+}
+
+.Product-info .extra-protection {
+    position: relative;
+    margin-top: -270px;
+    width: 520px;
+    height: 2px;
+}
+
+.extra-protection .p1 {
+    width: 155px;
+    color: #000;
+    font-family: 'Yu Gothic UI', sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 19.5px; /* 150% */
+}
+
+.Link {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.Link .i1,
+.Link .i2 {
+    width: 230px;
+    height: 39px;
+    box-sizing: border-box;
+    border: 0.2px solid #141414;
+    color: #000;
+    text-align: center;
+    font-family: 'Yu Gothic', sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.605px;
+    background-color: transparent;
+    margin-right: 19px;
+}
+
+.Link .i1.selected,
+.Link .i2.selected {
+    background-color: #141414;
+    color: white;
+    animation: none; /* 取消按钮 hover 时的动画效果 */
+}
+
+.Link .i1.selected::before,
+.Link .i2.selected::before {
+    content: none; /* 取消按钮 hover 时的伪元素效果 */
+}
+
+
+.Link .i1:hover,
+.Link .i2:hover {
+    animation: glow 1s ease-in infinite;
+    background: transparent;
+    border-radius: inherit;
+    transition: all 0.3s ease-in-out;
+    color: white;
+}
+
+.Link .i1::before,
+.Link .i2::before {
+    animation: glow 0s ease-in infinite;
+    background: transparent;
+    border-radius: inherit;
+    content: "";
+    filter: blur(10px);
+    opacity: 0.75;
+    position: absolute;
+    transition: all 0.3s ease-in-out;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    z-index: -1;
+}
+
+.Link .i1:hover::before,
+.Link .i2:hover::before {
+    filter: blur(20px);
+    opacity: 1;
+}
+
+@-webkit-keyframes glow {
+    0% {
+        background: grey;
+    }
+    25% {
+        background: grey;
+    }
+    100% {
+        background: grey;
+    }
+}
+
+@keyframes glow {
+    0% {
+        background: black;
+    }
+    25% {
+        background: black;
+    }
+    100% {
+        background: black;
+    }
+}
+
+.extra-protection .p2 {
+    position: relative;
+    margin-top: 18px;
+    width: 207px;
+    color: #000;
+    font-family: 'Yu Gothic UI', sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 19.5px; /* 150% */
+}
+
+.extra-protection select {
+    width: 479px;
+    height: 39px;
+    border: 1px solid #DDD;
+    color: #000;
+    font-family: 'Yu Gothic', sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 19.5px; /* 150% */
+}
+
+.extra-protection #quantity {
+    position: relative;
+    margin-top: 18px;
+    width: 76px;
+    height: 40px;
+    border: 1px solid #DDD;
+    background: transparent;
+    color: #000;
+    font-family: 'Yu Gothic', sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 19.5px; /* 150% */
+}
+
+#quantity::placeholder {
+    color: rosybrown;
+    font-family: 'Yu Gothic', serif;
+    font-size: 13.2px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 21.45px; /* 162.5% */
+}
+
+#quantity[disabled]::placeholder {
+    color: #FFFFFF; /* 设置占位符字体颜色为白色 */
+}
+
+.Link2 a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.Link2 button {
+    position: relative;
+    margin-top: 18px;
+    width: 230px;
+    height: 39px;
+    border: 1.5px solid #141414;
+    color: #000;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 19.5px; /* 150% */
+    letter-spacing: 1.95px;
+    background-color: transparent;
+    margin-right: 19px;
+}
+
+.Link2 button:hover {
+    -webkit-animation: glow 1s ease-in infinite;
+    animation: glow 1s ease-in infinite;
+    background: transparent;
+    border-radius: inherit;
+    transition: all 0.3s ease-in-out;
+    color: white;
+}
+
+.extra-protection .p3 {
+    position: relative;
+    margin-top: 18px;
+    width: 207px;
+    color: #000;
+    font-family: 'Yu Gothic UI', sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 19.5px; /* 150% */
+}
+
+.extra-protection .desc2 {
+    position: relative;
+    margin-top: 18px;
+    width: 468px;
+}
+
+.extra-protection .desc2 p {
+    color: #141414;
+    font-family: 'Yu Gothic', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 27.2px; /* 170% */
+    letter-spacing: 0.768px;
+}
+
+
+

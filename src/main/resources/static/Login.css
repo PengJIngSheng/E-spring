@@ -1,0 +1,510 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmWUlfBBc4.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+body {
+    margin: 0;
+}
+
+.Banner {
+    display: flex;
+    height: 150px;
+    justify-content: center;
+    align-items: center;
+}
+
+.Banner .Nav {
+    position: relative;
+    width: 1133px;
+    height: 150.5px;
+    display: flex;
+    align-items: center;
+}
+
+.Banner .Nav .Sub-Nav {
+    position: relative;
+    left: 116.35px;
+    display: flex;
+    width: 776.48px;
+    padding: 10px 22px;
+    align-items: flex-start;
+    gap: 46.69px;
+}
+
+.Banner .Nav .Sub-Nav a {
+    text-decoration: none;
+}
+
+.Banner .Nav .Sub-Nav p {
+    position: relative;
+    display: inline-block;
+    color: #000;
+    font-size: 12px;
+    font-family: 'Studio Pro', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 18px;
+    letter-spacing: 1.08px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.Banner .Nav .Sub-Nav p::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2.5px;
+    background-color: #000;
+    bottom: -3px;
+    left: 0;
+    transition: transform 0.3s ease-in-out;
+    transform-origin: center;
+    transform: scaleX(0);
+}
+
+.Banner .Nav .Sub-Nav p:hover::before {
+    transform: scaleX(1);
+}
+
+.Banner .Nav .Icon-Nav {
+    position: absolute;
+    top: 50%;
+    right: 19px;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    transform: translateY(-50%);
+}
+
+.Banner .Nav #logo {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -44px;
+    width: 115px;
+    height: 115px;
+    flex-shrink: 0;
+    filter: drop-shadow(7px 7px 5px #797979);
+}
+
+.Coffee-Words {
+    position: relative;
+    top: 304.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Coffee-Words p {
+    color: black;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 37px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 55.5px;
+    letter-spacing: 5.55px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+.Coffee-Words p:nth-child(1) {
+    transition-delay: 0s;
+}
+
+.Coffee-Words p:nth-child(2) {
+    transition-delay: 0.1s;
+}
+
+.Coffee-Words p:nth-child(3) {
+    transition-delay: 0.2s;
+}
+
+.Coffee-Words p:nth-child(4) {
+    transition-delay: 0.3s;
+}
+
+.Coffee-Words p:nth-child(5) {
+    transition-delay: 0.4s;
+}
+
+.Coffee-Words p:nth-child(6) {
+    transition-delay: 0.5s;
+}
+
+.Text1 {
+    position: relative;
+    top: 397.5px;
+    left: 510px;
+    width: 433.4px;
+    color: #000;
+    font-family: 'Yu Gothic UI', serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px; /* 169.231% */
+    letter-spacing: 0.33px;
+}
+
+.Email-label {
+    position: relative;
+    top: 445.5px;
+    left: 510px;
+    width: 100.1px;
+    color: #737373;
+    font-family: 'Yu Gothic', serif;
+    font-size: 13.2px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 21.45px; /* 162.5% */
+}
+
+.Email-input input {
+    position: relative;
+    top: 445.5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 660px;
+    height: 40.7px;
+    flex-shrink: 0;
+    border-radius: 2.2px;
+    border: 1.1px solid #ccc;
+    background: #fff;
+}
+
+.Password-label {
+    position: relative;
+    left: 510px;
+    top: 471.8px;
+    width: 71.5px;
+    color: #737373;
+    font-family: 'Yu Gothic', serif;
+    font-size: 13.2px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 21.45px; /* 162.5% */
+}
+
+.Password-input input {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 471.8px;
+    width: 660px;
+    height: 40.7px;
+    flex-shrink: 0;
+    border-radius: 2.2px;
+    border: 1.1px solid #ccc;
+    background: #fff;
+}
+
+.Text2 {
+    position: relative;
+    top: 538px;
+    left: 510px;
+    width: 433.4px;
+    color: #000;
+    font-family: 'Yu Gothic UI', serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px; /* 169.231% */
+    letter-spacing: 0.33px;
+}
+
+.error::placeholder {
+    color: red;
+}
+
+
+.Login-button {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 597.2px;
+    width: 666.1px;
+    height: 46.2px;
+    overflow: hidden;
+    border: 1px solid;
+    font-family: Roboto;
+    font-weight: 300;
+    font-size: 13.5px;
+    transition: 0.5s;
+    letter-spacing: 1px;
+}
+
+.Login-button button {
+    width: 666.1px;
+    height: 46.2px;
+    font-family: Roboto;
+    font-weight: 300;
+    font-size: 13.5px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    background: #000;
+    -webkit-mask: url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/nature-sprite.png");
+    mask: url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/nature-sprite.png");
+    -webkit-mask-size: 2300% 100%;
+    mask-size: 2300% 100%;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    -webkit-animation: ani2 0.7s steps(22) forwards;
+    animation: ani2 0.7s steps(22) forwards;
+}
+
+.Login-button button:hover {
+    -webkit-animation: ani 0.7s steps(22) forwards;
+    animation: ani 0.7s steps(22) forwards;
+}
+
+.mas {
+    position: absolute;
+    color: #000;
+    text-align: center;
+    width: 101%;
+    font-family: Roboto;
+    font-weight: 300;
+    position: absolute;
+    font-size: 13.5px;
+    margin-top: 17px;
+    overflow: hidden;
+    font-weight: bold;
+}
+
+@-webkit-keyframes ani {
+    from {
+        -webkit-mask-position: 0 0;
+        mask-position: 0 0;
+    }
+    to {
+        -webkit-mask-position: 100% 0;
+        mask-position: 100% 0;
+    }
+}
+
+@keyframes ani {
+    from {
+        -webkit-mask-position: 0 0;
+        mask-position: 0 0;
+    }
+    to {
+        -webkit-mask-position: 100% 0;
+        mask-position: 100% 0;
+    }
+}
+
+@-webkit-keyframes ani2 {
+    from {
+        -webkit-mask-position: 100% 0;
+        mask-position: 100% 0;
+    }
+    to {
+        -webkit-mask-position: 0 0;
+        mask-position: 0 0;
+    }
+}
+
+@keyframes ani2 {
+    from {
+        -webkit-mask-position: 100% 0;
+        mask-position: 100% 0;
+    }
+    to {
+        -webkit-mask-position: 0 0;
+        mask-position: 0 0;
+    }
+}
+
+.Remeber-me-box input {
+    position: relative;
+    left: 505px;
+    top: 612.8px;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    border-radius: none;
+    border: 1px solid #000;
+    background: #fff;
+    -webkit-border-radius: none;
+    -moz-border-radius: none;
+    -ms-border-radius: none;
+    -o-border-radius: none;
+}
+
+.Remeber-me-box input:checked {
+    background-color: transparent;
+    color: black;
+    border-color: #000;
+}
+
+.Remeber-me-box label {
+    position: relative;
+    left: 512px;
+    top: 608.3px;
+    width: 86px;
+    color: #000;
+    text-align: center;
+    font-family: 'Yu Gothic UI', serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 21.45px; /* 165% */
+}
+
+.Text3 p {
+    position: relative;
+    top: 576px;
+    left: 1040px;
+    width: 140px;
+    color: #000;
+    text-align: center;
+    text-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    font-family: 'Yu Gothic';
+    font-size: 13.5px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 21.45px; /* 158.889% */
+}
+
+.Text3 a {
+    text-decoration: none;
+}
+
+.Text4 p {
+    position: relative;
+    top: 770px;
+    left: 510px;
+    width: 433.4px;
+    color: #000;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 200;
+    line-height: 22px; /* 169.231% */
+    letter-spacing: 0.33px;
+}
+
+.Text5 p {
+    position: relative;
+    top: 823px;
+    left: 510px;
+    width: 433.4px;
+    color: #000;
+    font-family: 'Yu Gothic UI', serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px; /* 169.231% */
+    letter-spacing: 0.33px;
+}
+
+.Sign-button {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 888.6px;
+    width: 666.1px;
+    height: 46.2px;
+    overflow: hidden;
+    border: 1px solid;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 13.5px;
+    transition: 0.5s;
+    letter-spacing: 1px;
+}
+
+.Sign-button button {
+    width: 666.1px;
+    height: 46.2px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 13.5px;
+    letter-spacing: 1px;
+    background: #000;
+    -webkit-mask: url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/nature-sprite.png");
+    mask: url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/nature-sprite.png");
+    -webkit-mask-size: 2300% 100%;
+    mask-size: 2300% 100%;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    -webkit-animation: ani2 0.7s steps(22) forwards;
+    animation: ani2 0.7s steps(22) forwards;
+}
+
+.Sign-button button:hover {
+    -webkit-animation: ani 0.7s steps(22) forwards;
+    animation: ani 0.7s steps(22) forwards;
+}
+
+/* Footer */
+.Bottom-Banner {
+    position: relative;
+    top: 1200px;
+    display: flex;
+    height: 150px;
+    width: 100%;
+    flex-shrink: 0;
+    border-top: 1px solid gray;
+    justify-content: center;
+    align-items: center;
+}
+
+.Bottom-Banner .Nav {
+    display: inline-flex;
+    padding: 0px 4px;
+    justify-content: center;
+    align-items: center;
+    gap: 46.71px;
+}
+
+.Bottom-Banner .Nav a {
+    text-decoration: none;
+}
+
+.Bottom-Banner .Nav p {
+    display: flex;
+    height: 14px;
+    flex-direction: column;
+    justify-content: center;
+    color: #000;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 25.019px; /* 208.496% */
+    letter-spacing: 1.635px;
+}
+
+.Bottom-Banner .Nav .p1 {
+    width: 117px;
+}
+
+.Bottom-Banner .Nav .p2 {
+    width: 83px;
+}
+
+.Bottom-Banner .Nav .p3 {
+    width: 133px;
+}
+
+.Bottom-Banner .Nav img {
+    width: 191.571px;
+    height: 45px;
+}
+
+.Bottom-Banner .img-container {
+    order: -1; /* 放在Nav的左边 */
+}
+
+.Bottom-Banner img {
+    position: relative;
+    width: 123px;
+    height: 100px;
+    flex-shrink: 0;
+}

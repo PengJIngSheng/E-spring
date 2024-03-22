@@ -1,0 +1,1769 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmWUlfBBc4.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+body {
+    margin: 0;
+}
+
+.Banner {
+    display: flex;
+    height: 150px;
+    justify-content: center;
+    align-items: center;
+}
+
+.Banner .Nav {
+    position: relative;
+    width: 1133px;
+    height: 150.5px;
+    display: flex;
+    align-items: center;
+}
+
+.Banner .Nav .Sub-Nav {
+    position: relative;
+    left: 116.35px;
+    display: flex;
+    width: 776.48px;
+    padding: 10px 22px;
+    align-items: flex-start;
+    gap: 46.69px;
+}
+
+.Banner .Nav .Sub-Nav a {
+    text-decoration: none;
+}
+
+.Banner .Nav .Sub-Nav p {
+    position: relative;
+    display: inline-block;
+    color: #000;
+    font-size: 12px;
+    font-family: 'Studio Pro', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 18px;
+    letter-spacing: 1.08px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.Banner .Nav .Sub-Nav p::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2.5px;
+    background-color: #000;
+    bottom: -3px;
+    left: 0;
+    transition: transform 0.3s ease-in-out;
+    transform-origin: center;
+    transform: scaleX(0);
+}
+
+.Banner .Nav .Sub-Nav p:hover::before {
+    transform: scaleX(1);
+}
+
+.Banner .Nav .Icon-Nav {
+    position: absolute;
+    top: 50%;
+    right: 19px;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    transform: translateY(-50%);
+}
+
+.Banner .Nav #logo {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -44px;
+    width: 115px;
+    height: 115px;
+    flex-shrink: 0;
+    filter: drop-shadow(7px 7px 5px #797979);
+}
+
+.line-container {
+    position: relative;
+    top: 520px;
+    display: flex;
+    justify-content: center;
+}
+
+.vertical-line {
+    position: absolute;
+    width: 3.5px;
+    height: 0;
+    background-color: white;
+    animation: generateAndDisappear 3s linear infinite;
+    z-index: 2;
+}
+
+@keyframes generateAndDisappear {
+    0%, 100% {
+        top: 0;
+        height: 0;
+    }
+    20% {
+        top: 0;
+        height: 100px;
+    }
+    80% {
+        top: 100px;
+        height: 0;
+    }
+}
+
+#poster {
+    width: 100%;
+    height: 712px;
+    flex-shrink: 0;
+    transition: transform 2s, opacity 2s;
+    position: relative;
+    z-index: 1;
+}
+
+.Product-Words {
+    position: relative;
+    top: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Product-Words p {
+    color: black;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 37px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 55.5px;
+    letter-spacing: 5.55px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+.Product-Words p:nth-child(1) {
+    transition-delay: 0s;
+}
+
+.Product-Words p:nth-child(2) {
+    transition-delay: 0.1s;
+}
+
+.Product-Words p:nth-child(3) {
+    transition-delay: 0.2s;
+}
+
+.Product-Words p:nth-child(4) {
+    transition-delay: 0.3s;
+}
+
+.Product-Words p:nth-child(5) {
+    transition-delay: 0.4s;
+}
+
+.Product-Words p:nth-child(6) {
+    transition-delay: 0.5s;
+}
+
+.Product-Words p:nth-child(7) {
+    transition-delay: 0.6s;
+}
+
+.Product-sortter {
+    position: relative;
+    top: 51px;
+    display: flex;
+    height: 65.653px;
+    padding: 1px 325.488px 0.55px 326px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-top: 0.777px solid #EBEBEB;
+    border-bottom: 0.777px solid #EBEBEB;
+}
+
+.Product-sortter p {
+    flex-direction: column;
+    color: black;
+    font-family: Yu Gothic;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 15.6px; /* 150% */
+    text-transform: uppercase;
+}
+
+.Product-sortter #p1 {
+    position: relative;
+    left: -360px;
+}
+
+/*Starts here*/
+.Product-sortter .d1 {
+    position: relative;
+    left: -338.4px;
+    width: 250px;
+    margin-right: 1rem;
+}
+
+.Product-sortter .d1[open] {
+    z-index: 1;
+}
+
+.Product-sortter .d1 .radios {
+    padding: 1rem;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    list-style: none;
+    color: black;
+    font-family: Yu Gothic;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 15.6px; /* 150% */
+    text-transform: uppercase;
+}
+
+.Product-sortter .d1 .radios::-webkit-details-marker {
+    display: none;
+}
+
+.Product-sortter .d1[open] .radios:before {
+    content: '';
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    background: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.Product-sortter .d1 .radios:after {
+    content: '';
+    display: inline-block;
+    margin-left: 41px;
+    width: .5rem;
+    height: .5rem;
+    border-bottom: 1px solid currentColor;
+    border-left: 1px solid currentColor;
+    border-bottom-left-radius: 2px;
+    transform: rotate(-45deg) translate(50%, 0%);
+    transform-origin: center center;
+    transition: transform ease-in-out 100ms
+}
+
+.Product-sortter .d1 .radios:focus {
+    outline: none;
+}
+
+.Product-sortter .d1[open] .radios:after {
+    transform: rotate(135deg) translate(0%, 0%);
+}
+
+.Product-sortter .d1 ul {
+    width: 130px;
+    position: absolute;
+    top: calc(100% + .5rem);
+    left: 0;
+    padding: 1rem;
+    margin: 0;
+    box-sizing: border-box;
+    max-height: 200px;
+    overflow-y: auto;
+    list-style: none;
+    border-radius: 5px;
+    background: #e0e0e0;
+    box-shadow: 27px 27px 54px #bebebe,
+    -27px -27px 54px #ffffff;
+}
+
+.Product-sortter .d1 ul li {
+    margin: 0;
+    padding: 1rem 0;
+    color: black;
+    font-family: Yu Gothic;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 15.6px; /* 150% */
+    text-transform: uppercase;
+}
+
+.Product-sortter .d1 ul li:first-child {
+    padding-top: 0;
+}
+
+
+.Product-sortter .d1 ul li:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+/* FAKE SELECT */
+
+.Product-sortter .d1 .radios {
+    counter-reset: radios;
+}
+
+.Product-sortter .d1 .radios:before {
+    content: var(--selection);
+}
+
+.Product-sortter .d1 .radios input {
+    appearance: none;
+    display: none;
+}
+
+.Product-sortter .d1 .radios input:checked {
+    display: inline;
+    --display: block;
+}
+
+.Product-sortter .d1 .radios input:after {
+    content: attr(title);
+    display: inline;
+    color: #000;
+    font-family: Yu Gothic;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 15.6px; /* 150% */
+    text-transform: uppercase;
+}
+
+.Product-sortter .d1 ul.list {
+    counter-reset: labels;
+}
+
+.Product-sortter .d1 ul li label {
+    width: 100%;
+    display: flex;
+    cursor: pointer;
+    justify-content: space-between;
+}
+
+.Product-sortter .d1 ul li label span {
+    --display: none;
+    display: var(--display);
+    width: 1rem;
+    height: 1rem;
+    border-radius: 3px;
+}
+
+.Product-sortter #p2 {
+    position: relative;
+    right: -325px;
+    width: 119px;
+    flex-shrink: 0;
+    color: #000;
+    font-family: Yu Gothic;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 15.6px; /* 150% */
+    text-transform: uppercase;
+}
+
+/*Product code starts here*/
+.Product-list {
+    position: relative;
+    top: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    column-gap: 36.25px;
+    row-gap: -80px;
+    width: 1133px;
+    height: 1539px;
+    align-content: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    transition: 0.5s ease-in-out;
+}
+
+.Product-list .Product1 {
+    position: relative;
+    display: flex;
+    width: 200px;
+    height: 470.428px;
+    padding-bottom: 0px;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-shrink: 0;
+}
+
+.Product-list .Product1 img {
+    width: 140px;
+    height: 200.96px;
+    flex-shrink: 0;
+    background: lightgray 50% / cover no-repeat;
+    background: #e0e0e0;
+    box-shadow: 20px 20px 60px #bebebe,
+    -20px -20px 60px #ffffff;
+}
+
+.Product-list .Product1 .Product-info {
+    position: relative;
+    display: flex;
+    width: 158.61px;
+    height: 155px;
+    padding: 0px 16px 10.851px 0px;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.Product-list .Product1 .Product-info .desc {
+    position: relative;
+    height: 99px;
+    display: flex;
+    width: 200px;
+    padding-bottom: 0px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 4px;
+}
+
+.Product-list .Product1 .Product-info .desc .Name {
+    position: absolute;
+    margin-top: -10px;
+    display: flex;
+    width: 184.161px;
+    min-height: 52.147px;
+    height: 52.147px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #1B1B1D;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1px; /* 107% */
+    letter-spacing: 1.568px;
+}
+
+.Product-list .Product1 .Product-info .desc .About {
+    position: relative;
+    top: 6px;
+    display: flex;
+    width: 184px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    color: #141414;
+    font-family: 'Yu Gothic', sans-serif;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1px; /* 150% */
+    letter-spacing: -0.22px;
+}
+
+.Product-list .Product1 .Product-info .price {
+    position: relative;
+    top: -20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 133.102px;
+    height: 35.061px;
+    color: #1B1B1D;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 28.5px; /* 150% */
+    letter-spacing: -0.475px;
+}
+
+.Product-list .Product1 .Product-info .price span {
+    color: #141414;
+    font-family: 'Yu Gothic', sans-serif;
+    font-size: 15.742px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 23.612px; /* 150% */
+    letter-spacing: 0.756px;
+}
+
+/*Product code starts here*/
+.Product-list .Product2 {
+    position: relative;
+    display: flex;
+    width: 200px;
+    height: 470.428px;
+    padding-bottom: 0px;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-shrink: 0;
+}
+
+.Product-list .Product2 img {
+    width: 140px;
+    height: 200.96px;
+    flex-shrink: 0;
+    background: lightgray 50% / cover no-repeat;
+    background: #e0e0e0;
+    box-shadow: 20px 20px 60px #bebebe,
+    -20px -20px 60px #ffffff;
+}
+
+.Product-list .Product2 .Product-info {
+    position: relative;
+    display: flex;
+    width: 158.61px;
+    height: 155px;
+    padding: 0px 16px 10.851px 0px;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.Product-list .Product2 .Product-info .desc {
+    position: relative;
+    height: 99px;
+    display: flex;
+    width: 200px;
+    padding-bottom: 0px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 4px;
+}
+
+.Product-list .Product2 .Product-info .desc .Name {
+    position: absolute;
+    margin-top: -10px;
+    display: flex;
+    width: 184.161px;
+    min-height: 52.147px;
+    height: 52.147px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #1B1B1D;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1px; /* 107% */
+    letter-spacing: 1.568px;
+}
+
+.Product-list .Product2 .Product-info .desc .About {
+    position: relative;
+    top: 6px;
+    display: flex;
+    width: 184px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    color: #141414;
+    font-family: 'Yu Gothic', sans-serif;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1px; /* 150% */
+    letter-spacing: -0.22px;
+}
+
+.Product-list .Product2 .Product-info .price {
+    position: relative;
+    top: -20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 133.102px;
+    height: 35.061px;
+    color: #1B1B1D;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 28.5px; /* 150% */
+    letter-spacing: -0.475px;
+}
+
+.Product-list .Product2 .Product-info .price span {
+    color: #141414;
+    font-family: 'Yu Gothic', sans-serif;
+    font-size: 15.742px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 23.612px; /* 150% */
+    letter-spacing: 0.756px;
+}
+
+
+/*Product code starts here*/
+.Product-list .Product3 {
+    position: relative;
+    display: flex;
+    width: 200px;
+    height: 470.428px;
+    padding-bottom: 0px;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-shrink: 0;
+}
+
+.Product-list .Product3 img {
+    width: 140px;
+    height: 200.96px;
+    flex-shrink: 0;
+    background: lightgray 50% / cover no-repeat;
+    background: #e0e0e0;
+    box-shadow: 20px 20px 60px #bebebe,
+    -20px -20px 60px #ffffff;
+}
+
+.Product-list .Product3 .Product-info {
+    position: relative;
+    display: flex;
+    width: 158.61px;
+    height: 155px;
+    padding: 0px 16px 10.851px 0px;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.Product-list .Product3 .Product-info .desc {
+    position: relative;
+    height: 99px;
+    display: flex;
+    width: 200px;
+    padding-bottom: 0px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 4px;
+}
+
+.Product-list .Product3 .Product-info .desc .Name {
+    position: absolute;
+    margin-top: -10px;
+    display: flex;
+    width: 184.161px;
+    min-height: 52.147px;
+    height: 52.147px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #1B1B1D;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1px; /* 107% */
+    letter-spacing: 1.568px;
+}
+
+.Product-list .Product3 .Product-info .desc .About {
+    position: relative;
+    top: 6px;
+    display: flex;
+    width: 184px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    color: #141414;
+    font-family: 'Yu Gothic', sans-serif;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1px; /* 150% */
+    letter-spacing: -0.22px;
+}
+
+.Product-list .Product3 .Product-info .price {
+    position: relative;
+    top: -20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 133.102px;
+    height: 35.061px;
+    color: #1B1B1D;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 28.5px; /* 150% */
+    letter-spacing: -0.475px;
+}
+
+.Product-list .Product3 .Product-info .price span {
+    color: #141414;
+    font-family: 'Yu Gothic', sans-serif;
+    font-size: 15.742px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 23.612px; /* 150% */
+    letter-spacing: 0.756px;
+}
+
+/*Product code starts here*/
+.Product-list .Product4 {
+    position: relative;
+    display: flex;
+    width: 200px;
+    height: 470.428px;
+    padding-bottom: 0px;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-shrink: 0;
+}
+
+.Product-list .Product4 img {
+    width: 140px;
+    height: 200.96px;
+    flex-shrink: 0;
+    background: lightgray 50% / cover no-repeat;
+    background: #e0e0e0;
+    box-shadow: 20px 20px 60px #bebebe,
+    -20px -20px 60px #ffffff;
+}
+
+.Product-list .Product4 .Product-info {
+    position: relative;
+    display: flex;
+    width: 158.61px;
+    height: 155px;
+    padding: 0px 16px 10.851px 0px;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.Product-list .Product4 .Product-info .desc {
+    position: relative;
+    height: 99px;
+    display: flex;
+    width: 200px;
+    padding-bottom: 0px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 4px;
+}
+
+.Product-list .Product4 .Product-info .desc .Name {
+    position: absolute;
+    margin-top: -10px;
+    display: flex;
+    width: 184.161px;
+    min-height: 52.147px;
+    height: 52.147px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #1B1B1D;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1px; /* 107% */
+    letter-spacing: 1.568px;
+}
+
+.Product-list .Product4 .Product-info .desc .About {
+    position: relative;
+    top: 6px;
+    display: flex;
+    width: 184px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    color: #141414;
+    font-family: 'Yu Gothic', sans-serif;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1px; /* 150% */
+    letter-spacing: -0.22px;
+}
+
+.Product-list .Product4 .Product-info .price {
+    position: relative;
+    top: -20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 133.102px;
+    height: 35.061px;
+    color: #1B1B1D;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 28.5px; /* 150% */
+    letter-spacing: -0.475px;
+}
+
+.Product-list .Product4 .Product-info .price span {
+    color: #141414;
+    font-family: 'Yu Gothic', sans-serif;
+    font-size: 15.742px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 23.612px; /* 150% */
+    letter-spacing: 0.756px;
+}
+
+/*Product code starts here*/
+.Product-list .Product5 {
+    position: relative;
+    display: flex;
+    width: 200px;
+    height: 470.428px;
+    padding-bottom: 0px;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-shrink: 0;
+}
+
+.Product-list .Product5 img {
+    width: 140px;
+    height: 200.96px;
+    flex-shrink: 0;
+    background: lightgray 50% / cover no-repeat;
+    background: #e0e0e0;
+    box-shadow: 20px 20px 60px #bebebe,
+    -20px -20px 60px #ffffff;
+}
+
+.Product-list .Product5 .Product-info {
+    position: relative;
+    display: flex;
+    width: 158.61px;
+    height: 155px;
+    padding: 0px 16px 10.851px 0px;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.Product-list .Product5 .Product-info .desc {
+    position: relative;
+    height: 99px;
+    display: flex;
+    width: 200px;
+    padding-bottom: 0px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 4px;
+}
+
+.Product-list .Product5 .Product-info .desc .Name {
+    position: absolute;
+    margin-top: -10px;
+    display: flex;
+    width: 184.161px;
+    min-height: 52.147px;
+    height: 52.147px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #1B1B1D;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1px; /* 107% */
+    letter-spacing: 1.568px;
+}
+
+.Product-list .Product5 .Product-info .desc .About {
+    position: relative;
+    top: 6px;
+    display: flex;
+    width: 184px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    color: #141414;
+    font-family: 'Yu Gothic', sans-serif;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1px; /* 150% */
+    letter-spacing: -0.22px;
+}
+
+.Product-list .Product5 .Product-info .price {
+    position: relative;
+    top: -20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 133.102px;
+    height: 35.061px;
+    color: #1B1B1D;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 28.5px; /* 150% */
+    letter-spacing: -0.475px;
+}
+
+.Product-list .Product5 .Product-info .price span {
+    color: #141414;
+    font-family: 'Yu Gothic', sans-serif;
+    font-size: 15.742px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 23.612px; /* 150% */
+    letter-spacing: 0.756px;
+}
+
+/*Product code starts here*/
+.Product-list .Product6 {
+    position: relative;
+    display: flex;
+    width: 200px;
+    height: 470.428px;
+    padding-bottom: 0px;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-shrink: 0;
+}
+
+.Product-list .Product6 img {
+    width: 140px;
+    height: 200.96px;
+    flex-shrink: 0;
+    background: lightgray 50% / cover no-repeat;
+    background: #e0e0e0;
+    box-shadow: 20px 20px 60px #bebebe,
+    -20px -20px 60px #ffffff;
+}
+
+.Product-list .Product6 .Product-info {
+    position: relative;
+    display: flex;
+    width: 158.61px;
+    height: 155px;
+    padding: 0px 16px 10.851px 0px;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.Product-list .Product6 .Product-info .desc {
+    position: relative;
+    height: 99px;
+    display: flex;
+    width: 200px;
+    padding-bottom: 0px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 4px;
+}
+
+.Product-list .Product6 .Product-info .desc .Name {
+    position: absolute;
+    margin-top: -10px;
+    display: flex;
+    width: 184.161px;
+    min-height: 52.147px;
+    height: 52.147px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #1B1B1D;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1px; /* 107% */
+    letter-spacing: 1.568px;
+}
+
+.Product-list .Product6 .Product-info .desc .About {
+    position: relative;
+    top: 6px;
+    display: flex;
+    width: 184px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    color: #141414;
+    font-family: 'Yu Gothic', sans-serif;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1px; /* 150% */
+    letter-spacing: -0.22px;
+}
+
+.Product-list .Product6 .Product-info .price {
+    position: relative;
+    top: -20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 133.102px;
+    height: 35.061px;
+    color: #1B1B1D;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 28.5px; /* 150% */
+    letter-spacing: -0.475px;
+}
+
+.Product-list .Product6 .Product-info .price span {
+    color: #141414;
+    font-family: 'Yu Gothic', sans-serif;
+    font-size: 15.742px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 23.612px; /* 150% */
+    letter-spacing: 0.756px;
+}
+
+/*Product code starts here*/
+.Product-list .Product7 {
+    position: relative;
+    display: flex;
+    width: 200px;
+    height: 470.428px;
+    padding-bottom: 0px;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-shrink: 0;
+}
+
+.Product-list .Product7 img {
+    width: 140px;
+    height: 200.96px;
+    flex-shrink: 0;
+    background: lightgray 50% / cover no-repeat;
+    background: #e0e0e0;
+    box-shadow: 20px 20px 60px #bebebe,
+    -20px -20px 60px #ffffff;
+}
+
+.Product-list .Product7 .Product-info {
+    position: relative;
+    display: flex;
+    width: 158.61px;
+    height: 155px;
+    padding: 0px 16px 10.851px 0px;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.Product-list .Product7 .Product-info .desc {
+    position: relative;
+    height: 99px;
+    display: flex;
+    width: 200px;
+    padding-bottom: 0px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 4px;
+}
+
+.Product-list .Product7 .Product-info .desc .Name {
+    position: absolute;
+    margin-top: -10px;
+    display: flex;
+    width: 184.161px;
+    min-height: 52.147px;
+    height: 52.147px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #1B1B1D;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1px; /* 107% */
+    letter-spacing: 1.568px;
+}
+
+.Product-list .Product7 .Product-info .desc .About {
+    position: relative;
+    top: 6px;
+    display: flex;
+    width: 184px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    color: #141414;
+    font-family: 'Yu Gothic', sans-serif;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1px; /* 150% */
+    letter-spacing: -0.22px;
+}
+
+.Product-list .Product7 .Product-info .price {
+    position: relative;
+    top: -20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 133.102px;
+    height: 35.061px;
+    color: #1B1B1D;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 28.5px; /* 150% */
+    letter-spacing: -0.475px;
+}
+
+.Product-list .Product7 .Product-info .price span {
+    color: #141414;
+    font-family: 'Yu Gothic', sans-serif;
+    font-size: 15.742px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 23.612px; /* 150% */
+    letter-spacing: 0.756px;
+}
+
+/*Product code starts here*/
+.Product-list .Product8 {
+    position: relative;
+    display: flex;
+    width: 200px;
+    height: 470.428px;
+    padding-bottom: 0px;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-shrink: 0;
+}
+
+.Product-list .Product8 img {
+    width: 140px;
+    height: 200.96px;
+    flex-shrink: 0;
+    background: lightgray 50% / cover no-repeat;
+    background: #e0e0e0;
+    box-shadow: 20px 20px 60px #bebebe,
+    -20px -20px 60px #ffffff;
+}
+
+.Product-list .Product8 .Product-info {
+    position: relative;
+    display: flex;
+    width: 158.61px;
+    height: 155px;
+    padding: 0px 16px 10.851px 0px;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.Product-list .Product8 .Product-info .desc {
+    position: relative;
+    height: 99px;
+    display: flex;
+    width: 200px;
+    padding-bottom: 0px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 4px;
+}
+
+.Product-list .Product8 .Product-info .desc .Name {
+    position: absolute;
+    margin-top: -10px;
+    display: flex;
+    width: 184.161px;
+    min-height: 52.147px;
+    height: 52.147px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #1B1B1D;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1px; /* 107% */
+    letter-spacing: 1.568px;
+}
+
+.Product-list .Product8 .Product-info .desc .About {
+    position: relative;
+    top: 6px;
+    display: flex;
+    width: 184px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    color: #141414;
+    font-family: 'Yu Gothic', sans-serif;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1px; /* 150% */
+    letter-spacing: -0.22px;
+}
+
+.Product-list .Product8 .Product-info .price {
+    position: relative;
+    top: -20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 133.102px;
+    height: 35.061px;
+    color: #1B1B1D;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 28.5px; /* 150% */
+    letter-spacing: -0.475px;
+}
+
+.Product-list .Product8 .Product-info .price span {
+    color: #141414;
+    font-family: 'Yu Gothic', sans-serif;
+    font-size: 15.742px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 23.612px; /* 150% */
+    letter-spacing: 0.756px;
+}
+
+/*Product code starts here*/
+.Product-list .Product9 {
+    position: relative;
+    display: flex;
+    width: 200px;
+    height: 470.428px;
+    padding-bottom: 0px;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-shrink: 0;
+}
+
+.Product-list .Product9 img {
+    width: 140px;
+    height: 200.96px;
+    flex-shrink: 0;
+    background: lightgray 50% / cover no-repeat;
+    background: #e0e0e0;
+    box-shadow: 20px 20px 60px #bebebe,
+    -20px -20px 60px #ffffff;
+}
+
+.Product-list .Product9 .Product-info {
+    position: relative;
+    display: flex;
+    width: 158.61px;
+    height: 155px;
+    padding: 0px 16px 10.851px 0px;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.Product-list .Product9 .Product-info .desc {
+    position: relative;
+    height: 99px;
+    display: flex;
+    width: 200px;
+    padding-bottom: 0px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 4px;
+}
+
+.Product-list .Product9 .Product-info .desc .Name {
+    position: absolute;
+    margin-top: -10px;
+    display: flex;
+    width: 184.161px;
+    min-height: 52.147px;
+    height: 52.147px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #1B1B1D;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1px; /* 107% */
+    letter-spacing: 1.568px;
+}
+
+.Product-list .Product9 .Product-info .desc .About {
+    position: relative;
+    top: 6px;
+    display: flex;
+    width: 184px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    color: #141414;
+    font-family: 'Yu Gothic', sans-serif;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1px; /* 150% */
+    letter-spacing: -0.22px;
+}
+
+.Product-list .Product9 .Product-info .price {
+    position: relative;
+    top: -20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 133.102px;
+    height: 35.061px;
+    color: #1B1B1D;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 28.5px; /* 150% */
+    letter-spacing: -0.475px;
+}
+
+.Product-list .Product9 .Product-info .price span {
+    color: #141414;
+    font-family: 'Yu Gothic', sans-serif;
+    font-size: 15.742px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 23.612px; /* 150% */
+    letter-spacing: 0.756px;
+}
+
+/*Product code starts here*/
+.Product-list .Product10 {
+    position: relative;
+    display: flex;
+    width: 200px;
+    height: 470.428px;
+    padding-bottom: 0px;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-shrink: 0;
+}
+
+.Product-list .Product10 img {
+    width: 140px;
+    height: 200.96px;
+    flex-shrink: 0;
+    background: lightgray 50% / cover no-repeat;
+    background: #e0e0e0;
+    box-shadow: 20px 20px 60px #bebebe,
+    -20px -20px 60px #ffffff;
+}
+
+.Product-list .Product10 .Product-info {
+    position: relative;
+    display: flex;
+    width: 158.61px;
+    height: 155px;
+    padding: 0px 16px 10.851px 0px;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.Product-list .Product10 .Product-info .desc {
+    position: relative;
+    height: 99px;
+    display: flex;
+    width: 200px;
+    padding-bottom: 0px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 4px;
+}
+
+.Product-list .Product10 .Product-info .desc .Name {
+    position: absolute;
+    margin-top: -10px;
+    display: flex;
+    width: 184.161px;
+    min-height: 52.147px;
+    height: 52.147px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #1B1B1D;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1px; /* 107% */
+    letter-spacing: 1.568px;
+}
+
+.Product-list .Product10 .Product-info .desc .About {
+    position: relative;
+    top: 6px;
+    display: flex;
+    width: 184px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    color: #141414;
+    font-family: 'Yu Gothic', sans-serif;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1px; /* 150% */
+    letter-spacing: -0.22px;
+}
+
+.Product-list .Product10 .Product-info .price {
+    position: relative;
+    top: -20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 133.102px;
+    height: 35.061px;
+    color: #1B1B1D;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 28.5px; /* 150% */
+    letter-spacing: -0.475px;
+}
+
+.Product-list .Product10 .Product-info .price span {
+    color: #141414;
+    font-family: 'Yu Gothic', sans-serif;
+    font-size: 15.742px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 23.612px; /* 150% */
+    letter-spacing: 0.756px;
+}
+
+/*Product code starts here*/
+.Product-list .Product11 {
+    position: relative;
+    display: flex;
+    width: 200px;
+    height: 470.428px;
+    padding-bottom: 0px;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-shrink: 0;
+}
+
+.Product-list .Product11 img {
+    width: 140px;
+    height: 200.96px;
+    flex-shrink: 0;
+    background: lightgray 50% / cover no-repeat;
+    background: #e0e0e0;
+    box-shadow: 20px 20px 60px #bebebe,
+    -20px -20px 60px #ffffff;
+}
+
+.Product-list .Product11 .Product-info {
+    position: relative;
+    display: flex;
+    width: 158.61px;
+    height: 155px;
+    padding: 0px 16px 10.851px 0px;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.Product-list .Product11 .Product-info .desc {
+    position: relative;
+    height: 99px;
+    display: flex;
+    width: 200px;
+    padding-bottom: 0px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 4px;
+}
+
+.Product-list .Product11 .Product-info .desc .Name {
+    position: absolute;
+    margin-top: -10px;
+    display: flex;
+    width: 184.161px;
+    min-height: 52.147px;
+    height: 52.147px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #1B1B1D;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1px; /* 107% */
+    letter-spacing: 1.568px;
+}
+
+.Product-list .Product11 .Product-info .desc .About {
+    position: relative;
+    top: 6px;
+    display: flex;
+    width: 184px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    color: #141414;
+    font-family: 'Yu Gothic', sans-serif;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1px; /* 150% */
+    letter-spacing: -0.22px;
+}
+
+.Product-list .Product11 .Product-info .price {
+    position: relative;
+    top: -20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 133.102px;
+    height: 35.061px;
+    color: #1B1B1D;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 28.5px; /* 150% */
+    letter-spacing: -0.475px;
+}
+
+.Product-list .Product11 .Product-info .price span {
+    color: #141414;
+    font-family: 'Yu Gothic', sans-serif;
+    font-size: 15.742px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 23.612px; /* 150% */
+    letter-spacing: 0.756px;
+}
+
+/*Product code starts here*/
+.Product-list .Product12 {
+    position: relative;
+    display: flex;
+    width: 200px;
+    height: 470.428px;
+    padding-bottom: 0px;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-shrink: 0;
+}
+
+.Product-list .Product12 img {
+    width: 140px;
+    height: 200.96px;
+    flex-shrink: 0;
+    background: lightgray 50% / cover no-repeat;
+    background: #e0e0e0;
+    box-shadow: 20px 20px 60px #bebebe,
+    -20px -20px 60px #ffffff;
+}
+
+.Product-list .Product12 .Product-info {
+    position: relative;
+    display: flex;
+    width: 158.61px;
+    height: 155px;
+    padding: 0px 16px 10.851px 0px;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.Product-list .Product12 .Product-info .desc {
+    position: relative;
+    height: 99px;
+    display: flex;
+    width: 200px;
+    padding-bottom: 0px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 4px;
+}
+
+.Product-list .Product12 .Product-info .desc .Name {
+    position: absolute;
+    margin-top: -10px;
+    display: flex;
+    width: 184.161px;
+    min-height: 52.147px;
+    height: 52.147px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #1B1B1D;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1px; /* 107% */
+    letter-spacing: 1.568px;
+}
+
+.Product-list .Product12 .Product-info .desc .About {
+    position: relative;
+    top: 6px;
+    display: flex;
+    width: 184px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    color: #141414;
+    font-family: 'Yu Gothic', sans-serif;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1px; /* 150% */
+    letter-spacing: -0.22px;
+}
+
+.Product-list .Product12 .Product-info .price {
+    position: relative;
+    top: -20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 133.102px;
+    height: 35.061px;
+    color: #1B1B1D;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 28.5px; /* 150% */
+    letter-spacing: -0.475px;
+}
+
+.Product-list .Product12 .Product-info .price span {
+    color: #141414;
+    font-family: 'Yu Gothic', sans-serif;
+    font-size: 15.742px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 23.612px; /* 150% */
+    letter-spacing: 0.756px;
+}
+
+.Product-list img {
+    transition: 0.5s ease-in-out;
+}
+
+
+.Product-list img:hover {
+    transform: scale(1.1);
+    transition: 0.5s ease-in-out;
+}
+
+/* Footer */
+.Bottom-Banner {
+    position: relative;
+    top: 300px;
+    display: flex;
+    height: 150px;
+    width: 100%;
+    flex-shrink: 0;
+    border-top: 1px solid gray;
+    justify-content: center;
+    align-items: center;
+}
+
+.Bottom-Banner .Nav {
+    display: inline-flex;
+    padding: 0px 4px;
+    justify-content: center;
+    align-items: center;
+    gap: 46.71px;
+}
+
+.Bottom-Banner .Nav a {
+    text-decoration: none;
+}
+
+.Bottom-Banner .Nav p {
+    display: flex;
+    height: 14px;
+    flex-direction: column;
+    justify-content: center;
+    color: #000;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 25.019px; /* 208.496% */
+    letter-spacing: 1.635px;
+}
+
+.Bottom-Banner .Nav .p1 {
+    width: 117px;
+}
+
+.Bottom-Banner .Nav .p2 {
+    width: 83px;
+}
+
+.Bottom-Banner .Nav .p3 {
+    width: 133px;
+}
+
+.Bottom-Banner .Nav img {
+    width: 191.571px;
+    height: 45px;
+}
+
+.Bottom-Banner .img-container {
+    order: -1; /* 放在Nav的左边 */
+}
+
+.Bottom-Banner img {
+    position: relative;
+    width: 123px;
+    height: 100px;
+    flex-shrink: 0;
+}
