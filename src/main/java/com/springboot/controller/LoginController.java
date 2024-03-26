@@ -25,6 +25,13 @@ public class LoginController {
     }
 
 
+    @GetMapping("pornhub")
+    public String demopage(){
+        System.out.println("demo page accces");
+        return null;
+    }
+
+
     @PostMapping("login")
     public String loginFunction(User user, Model model){
         String errorMessage = null;
