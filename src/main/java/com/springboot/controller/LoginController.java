@@ -2,16 +2,19 @@ package com.springboot.controller;
 
 import com.springboot.mapper.UserMapper;
 import com.springboot.pojo.User;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
+@AllArgsConstructor
 @RequestMapping("/demo")
 public class LoginController {
-    @Autowired
-    private UserMapper userMapper;
+
+    private final PasswordEncoder passwordEncoder;
+    private final UserMapper userMapper;
 
     @GetMapping("/mainpage")
     public String showlanding(){
@@ -24,7 +27,7 @@ public class LoginController {
     }
 
     @PostMapping("login")
-    public String loginFunction(User user, Model model){
+    public String loginFunction(User user, Model model) {
         String errorMessage = null;
         try {
             // 检查用户输入是否为空
@@ -35,15 +38,15 @@ public class LoginController {
             }
 
             User foundUser = userMapper.findByEmail(user.getEmail());
-            if(foundUser == null) {
+            if (foundUser == null) {
                 errorMessage = "Email not found";
             } else {
-                User loggedInUser = userMapper.login(user.getEmail(), user.getPassword());
-                if(loggedInUser == null) {
-                    errorMessage = "Wrong password";
-                } else {
-                    System.out.println(user.getFirstname());
+                // 使用PasswordEncoder验证密码
+                if (passwordEncoder.matches(user.getPassword(), foundUser.getPassword())) {
                     return showlanding();
+                } else {
+                    errorMessage = "Wrong password";
+                    System.out.println(user.getPassword() + "密码错误");
                 }
             }
         } catch (Exception e) {
@@ -66,6 +69,7 @@ public class LoginController {
                 return showPage("signup");
             }
 
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
             String maxCustId = userMapper.getMaxCustId();
             int userCount = maxCustId == null ? 1001 : Integer.parseInt(maxCustId) + 1;
             String userId = "C" + userCount;
@@ -85,4 +89,5 @@ public class LoginController {
             return showPage("signup");
         }
     }
+
 }
