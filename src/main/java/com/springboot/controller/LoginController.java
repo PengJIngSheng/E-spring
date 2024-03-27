@@ -3,10 +3,15 @@ package com.springboot.controller;
 import com.springboot.mapper.UserMapper;
 import com.springboot.pojo.User;
 import lombok.AllArgsConstructor;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 
 @Controller
 @AllArgsConstructor
@@ -43,6 +48,12 @@ public class LoginController {
             } else {
                 // 使用PasswordEncoder验证密码
                 if (passwordEncoder.matches(user.getPassword(), foundUser.getPassword())) {
+                    // 创建一个新的Authentication对象
+                    Authentication auth = new UsernamePasswordAuthenticationToken(foundUser, null, new ArrayList<>());
+                    // 将新的Authentication对象保存到SecurityContext中
+                    SecurityContextHolder.getContext().setAuthentication(auth);
+                    System.out.println(SecurityContextHolder.getContext().getAuthentication());
+                    System.out.println(((User)auth.getPrincipal()).getCustid()); // 获取用户登录状态的ID
                     return showlanding();
                 } else {
                     errorMessage = "Wrong password";
@@ -56,6 +67,7 @@ public class LoginController {
         model.addAttribute("errorMessage", errorMessage);
         return showPage("login");
     }
+
 
     @PostMapping("signup")
     public String sufnction(User user, Model model) {
