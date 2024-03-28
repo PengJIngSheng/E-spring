@@ -1,110 +1,18 @@
-<?php
-session_set_cookie_params(0);
-session_start();
-require('include/db.php');
-
-$quantity_reached_5 = false;
-
-if (isset($_SESSION['loginuser'])) {
-    $name = "PRIDE AND PREJUDICE";
-    $custid = $_SESSION['loginuser']['custid'];
-    $price = "44.10";
-    $price = floatval($price);
-    $protection = $_POST['protect'];
-
-    $stmt = $conn->prepare("SELECT `quantity` FROM `cart` WHERE `productname` = ? AND `custid` = ?");
-    $stmt->bind_param("ss", $name, $custid);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        $quantity = $row['quantity'];
-        if ($quantity >= 5) {
-            $quantity_reached_5 = true;
-        }
-    }
-    if ($_SERVER["REQUEST_METHOD"] == 'POST' && isset($_POST["submit"])) {
-        $trimmed = array_map('trim', $_POST);
-
-//        $name = "WUTHERING HEIGHTS";
-        if ($quantity_reached_5) {
-            $gift = $_POST['gift'];
-            $stmt = $conn->prepare("UPDATE `cart` SET `protection` = ?, `giftpaper` = ? WHERE `productname` = ? AND `custid` = ?");
-            $stmt->bind_param("ssss", $protection, $gift, $name, $custid);
-            if ($stmt->execute()) {
-                echo '<script>alert("Updated Cart");</script>';
-            } else {
-                echo '<script>alert("Cannot update cart");</script>';
-            }
-        } else if (isset($trimmed['quantity']) && is_numeric($trimmed['quantity'])) {
-            $new_quantity = $trimmed['quantity'];
-
-            if ($new_quantity > 0 && $new_quantity <= 5) {
-                $gift = $_POST['gift'];
-                $img = "BookProduct/BP2.png";
-
-                if ($result->num_rows > 0) {
-                    if ($quantity < 5) {
-                        $sum_quantity = $quantity + $new_quantity;
-                        if ($sum_quantity <= 5) {
-                            $new_quantity = $sum_quantity;
-                            $stmt = $conn->prepare("UPDATE `cart` SET `quantity` = ?, `protection` = ?, `giftpaper` = ? WHERE `productname` = ? AND `custid` = ?");
-                            $stmt->bind_param("issss", $new_quantity, $protection, $gift, $name, $custid);
-                            if ($stmt->execute()) {
-                                $quantity_reached_5 = ($new_quantity == 5);
-                                echo '<script>alert("Updated Cart");</script>';
-                            } else {
-                                echo '<script>alert("Cannot update cart");</script>';
-                            }
-                        } else {
-                            echo '<script>alert("Cannot save more than 5 books");</script>';
-                        }
-                    } else {
-                        $stmt = $conn->prepare("UPDATE `cart` SET `protection` = ?, `giftpaper` = ? WHERE `productname` = ? AND `custid` = ?");
-                        $stmt->bind_param("ssss", $protection, $gift, $name, $custid);
-                        if ($stmt->execute()) {
-                            echo '<script>alert("Updated Cart");</script>';
-                        } else {
-                            echo '<script>alert("Cannot update cart");</script>';
-                        }
-                    }
-                } else {
-                    $stmt = $conn->prepare("INSERT INTO `cart` (custid, productname, price, protection, quantity, giftpaper, productimage) values (?, ?, ?, ?, ?, ?, ?)");
-                    $stmt->bind_param("sssssss", $custid, $name, $price, $protection, $new_quantity, $gift, $img);
-                    if ($stmt->execute()) {
-                        $quantity_reached_5 = ($new_quantity == 5);
-                        echo '<script>alert("Saved to cart");</script>';
-                    } else {
-                        echo '<script>alert("Cannot save to cart");</script>';
-                    }
-                }
-            } else {
-                echo '<script>alert("Each user can only purchase 5 books");</script>';
-            }
-        }
-    }
-} else {
-    if ($_SERVER["REQUEST_METHOD"] == 'POST' && isset($_POST["submit"])) {
-        echo '<script>alert("Login First to save to cart");window.location.href="login.php";</script>';
-    }
-}
-?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="css/Bookdetails.css">
+    <link rel="stylesheet" th:href="@{/Bookdetails.css}" href="css/Bookdetails.css">
 </head>
 <body>
 <div class="Banner">
     <div class="Nav">
-        <a href="Mainpage.html"><img id="logo" src="Logo2.png" alt=""/></a>
+        <a th:href="@{Mainpage}" href="Mainpage.html"><img src="../Logo2.png" alt="" id="logo"></a>
         <div class="Sub-Nav">
-            <a href="Bookproduct.html"><p>SHOP BOOK</p></a>
-            <a href="coffeeproduct.html"><p>COFFEE</p></a>
-            <a href="FAQ.html"><p>FAQ</p></a>
+            <a href="Bookproduct.html" th:href="@{Bookproduct}"><p>SHOP BOOK</p></a>
+            <a href="Coffeeproduct.html" th:href="@{Coffeeproduct}"><p>COFFEE</p></a>
+            <a href="FAQ.html" th:href="@{FAQ}"><p>FAQ</p></a>
         </div>
         <div class="Icon-Nav">
             <a href="https://www.instagram.com/shanmu_cafe/">
@@ -121,7 +29,7 @@ if (isset($_SESSION['loginuser'])) {
                     />
                 </svg>
             </a>
-            <a href="Contact.php">
+            <a th:href="@{Contact}" href="Contact.html">
                 <svg
                         width="17"
                         height="12"
@@ -135,7 +43,7 @@ if (isset($_SESSION['loginuser'])) {
                     />
                 </svg>
             </a>
-            <a href="login.php">
+            <a th:href="@{login}"> <!--找模板文件-->
                 <svg
                         width="17"
                         height="16"
@@ -165,7 +73,7 @@ if (isset($_SESSION['loginuser'])) {
                     </defs>
                 </svg>
             </a>
-            <a href="Shoppingcart.php">
+            <a th:href="@{Shoppingcart}" href="Shoppingcart.html">
                 <svg
                         width="19"
                         height="16"
@@ -207,7 +115,7 @@ if (isset($_SESSION['loginuser'])) {
         <p class="p1">01</p>
         <p class="p2">/</p>
         <p class="p3">02</p>
-        <img src="BookProduct/BP2.png" alt="">
+        <img src="../BookProduct/BP2.png" alt="">
         <div class="Left-button">
             <button><</button>
         </div>
@@ -245,12 +153,8 @@ if (isset($_SESSION['loginuser'])) {
                     <option value="No gift-paper">No gift-paper</option>
                     <option value="With gift-paper">With gift-paper</option>
                 </select>
-                <?php if ($quantity_reached_5 || !$result->num_rows) : ?>
-                    <input id="quantity" type="number" name="quantity"
-                           placeholder="Not >5" <?php echo $quantity_reached_5 ? 'disabled' : ''; ?>>
-                <?php else : ?>
-                    <input id="quantity" type="number" name="quantity" placeholder="Quantity">
-                <?php endif; ?>
+                <input id="quantity" type="number" name="quantity"
+                       placeholder="Not >5">
                 <div class="Link2">
                     <button type="submit" value="submit" name="submit">ADD TO CART</button>
                 </div>
@@ -266,7 +170,7 @@ if (isset($_SESSION['loginuser'])) {
 <script>
     var img = document.querySelector('.Product-image img');
     var p1 = document.querySelector('.Product-image .p1');
-    var images = ['BookProduct/BP2.png', 'image2.jpg'];
+    var images = ['../BookProduct/BP2.png', '../image2.jpg'];
     var currentIndex = 0;
     var leftButton = document.querySelector('.Product-image .Left-button button');
     var rightButton = document.querySelector('.Product-image .Right-button button');
@@ -315,17 +219,6 @@ if (isset($_SESSION['loginuser'])) {
             xhr.send(encodeURI(`protect=${selectedValue}`));
         });
     });
-
-    window.onload = function () {
-        var quantityInput = document.getElementById('quantity');
-        var quantityReached5 = <?php echo $quantity_reached_5 ? 'true' : 'false'; ?>;
-
-        if (quantityReached5) {
-            quantityInput.disabled = true;
-            quantityInput.style.backgroundColor = '#000000';
-            quantityInput.placeholder = '5';
-        }
-    };
 </script>
 </body>
 </html>

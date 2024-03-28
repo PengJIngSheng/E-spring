@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" th:href="@{/Bookproduct.css}" href="css/Bookdetails.css">
+    <link rel="stylesheet" th:href="@{/Bookdetails.css}" href="css/Bookdetails.css">
 </head>
 <body>
 <div class="Banner">
     <div class="Nav">
-
-        <a href="Mainpage.html"><img id="logo" src="Logo2.png" alt=""/></a>
+        <a th:href="@{Mainpage}" href="Mainpage.html"><img src="../Logo2.png" alt="" id="logo"></a>
         <div class="Sub-Nav">
-            <a href="Bookproduct.html"><p>SHOP BOOK</p></a>
-            <a href="coffeeproduct.html"><p>COFFEE</p></a>
-            <a href="FAQ.html"><p>FAQ</p></a>
+            <a href="Bookproduct.html" th:href="@{Bookproduct}"><p>SHOP BOOK</p></a>
+            <a href="Coffeeproduct.html" th:href="@{Coffeeproduct}"><p>COFFEE</p></a>
+            <a href="FAQ.html" th:href="@{FAQ}"><p>FAQ</p></a>
         </div>
         <div class="Icon-Nav">
             <a href="https://www.instagram.com/shanmu_cafe/">
@@ -30,7 +29,7 @@
                     />
                 </svg>
             </a>
-            <a href="Contact.php">
+            <a th:href="@{Contact}" href="Contact.html">
                 <svg
                         width="17"
                         height="12"
@@ -44,7 +43,7 @@
                     />
                 </svg>
             </a>
-            <a href="login.php">
+            <a th:href="@{login}"> <!--找模板文件-->
                 <svg
                         width="17"
                         height="16"
@@ -74,7 +73,7 @@
                     </defs>
                 </svg>
             </a>
-            <a href="Shoppingcart.php">
+            <a th:href="@{Shoppingcart}" href="Shoppingcart.html">
                 <svg
                         width="19"
                         height="16"
@@ -116,7 +115,7 @@
         <p class="p1">01</p>
         <p class="p2">/</p>
         <p class="p3">02</p>
-        <img src="BookProduct/BP1.png" alt="">
+        <img src="../BookProduct/BP1.png" alt="">
         <div class="Left-button">
             <button><</button>
         </div>
@@ -124,7 +123,7 @@
             <button>></button>
         </div>
     </div>
-    <form action="Book1details.php" method="post">
+    <form method="post">
         <div class="Product-info">
             <div class="Bookinfo">
                 <p class="Name">THE ART OF WAR</p>
@@ -154,12 +153,8 @@
                     <option value="No gift-paper">No gift-paper</option>
                     <option value="With gift-paper">With gift-paper</option>
                 </select>
-                <?php if ($quantity_reached_5 || !$result->num_rows) : ?>
-                    <input id="quantity" type="number" name="quantity"
-                           placeholder="Not >5" <?php echo $quantity_reached_5 ? 'disabled' : ''; ?>>
-                <?php else : ?>
-                    <input id="quantity" type="number" name="quantity" placeholder="Quantity">
-                <?php endif; ?>
+                <input id="quantity" type="number" name="quantity"
+                       placeholder="Not >5">
                 <div class="Link2">
                     <button type="submit" value="submit" name="submit">ADD TO CART</button>
                 </div>
@@ -175,7 +170,7 @@
 <script>
     var img = document.querySelector('.Product-image img');
     var p1 = document.querySelector('.Product-image .p1');
-    var images = ['BookProduct/BP1.png', 'image2.jpg'];
+    var images = ['../BookProduct/BP1.png', '../image2.jpg'];
     var currentIndex = 0;
     var leftButton = document.querySelector('.Product-image .Left-button button');
     var rightButton = document.querySelector('.Product-image .Right-button button');
@@ -225,16 +220,6 @@
         });
     });
 
-    window.onload = function () {
-        var quantityInput = document.getElementById('quantity');
-        var quantityReached5 = <?php echo $quantity_reached_5 ? 'true' : 'false'; ?>;
-
-        if (quantityReached5) {
-            quantityInput.disabled = true;
-            quantityInput.style.backgroundColor = '#000000';
-            quantityInput.placeholder = '5';
-        }
-    };
 </script>
 </body>
 </html>
