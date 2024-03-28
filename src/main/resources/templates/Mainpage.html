@@ -4,17 +4,17 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Document</title>
-    <link rel="stylesheet" th:href="@{/Mainpage.css}" href="css/Mainpage.css"/>
+    <link rel="stylesheet" th:href="@{/Mainpage.css}" href="../static/Mainpage.css"/> <!--需要写杠是为了找静态文件-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 <div class="Banner">
     <div class="Nav">
-        <a href="Mainpage.html"><img th:src="@{/Logo2.png}" src="../Logo.png" alt="" id="logo"></a>
+        <a th:href="@{Mainpage}" href="Mainpage.html"><img th:src="@{/Logo2.png}" src="../Logo.png" alt="" id="logo"></a>
         <div class="Sub-Nav">
-            <a href="Bookproduct.html"><p>SHOP BOOK</p></a>
-            <a href="coffeeproduct.html"><p>COFFEE</p></a>
-            <a href="FAQ.html"><p>FAQ</p></a>
+            <a href="Bookproduct.html" th:href="@{Bookproduct}"><p>SHOP BOOK</p></a>
+            <a href="Coffeeproduct.html" th:href="@{Coffeeproduct}"><p>COFFEE</p></a>
+            <a href="FAQ.html" th:href="@{FAQ}"><p>FAQ</p></a>
         </div>
         <div class="Icon-Nav">
             <a href="https://www.instagram.com/shanmu_cafe/">
@@ -31,7 +31,7 @@
                     />
                 </svg>
             </a>
-            <a href="Contact.php">
+            <a th:href="@{Contact}" href="Contact.html">
                 <svg
                         width="17"
                         height="12"
@@ -45,7 +45,7 @@
                     />
                 </svg>
             </a>
-            <a th:href="@{login}">
+            <a th:href="@{login}"> <!--找模板文件-->
                 <svg
                         width="17"
                         height="16"
@@ -75,7 +75,7 @@
                     </defs>
                 </svg>
             </a>
-            <a href="Shoppingcart.php">
+            <a th:href="@{Shoppingcart}" href="Shoppingcart.html">
                 <svg
                         width="19"
                         height="16"
@@ -184,7 +184,7 @@
                 <div class="text">This book is about... Tap on LEARN MORE</div>
             </div>
             <div class="Link">
-                <a href="Book1details.php">
+                <a href="Book1details.html">
                     <button>LEARN MORE</button>
                 </a>
             </div>
@@ -248,13 +248,13 @@
 </div>
 <div class="Bottom-Banner">
     <div class="img-container">
-        <a href="Mainpage.html"><img th:src="@{/Logo.png}" src="../static/Logo.png" alt=""></a>
+        <a th:href="@{Mainpage}" href="Mainpage.html"><img th:src="@{/Logo.png}" src="../static/Logo.png" alt=""></a>
     </div>
     <div class="Nav">
         <img th:src="@{/footersign.png}" alt="">
-        <a href="https://rog.asus.com/my/terms-of-notice/official-site/"><p class="p1">TERMS OF USE</p></a>
+        <a href=""><p class="p1">TERMS OF USE</p></a>
         <a href=""><p class="p2">ABOUT US</p></a>
-        <a href="https://rog.asus.com/my/terms-of-notice/official-site/"><p class="p3">PRIVACY POLICY</p></a>
+        <a href=""><p class="p3">PRIVACY POLICY</p></a>
         <a href="https://www.instagram.com/shanmu_cafe/">
             <svg width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M27.5714 2.75H9.57141C5.84349 2.75 2.82141 5.77208 2.82141 9.5V27.5C2.82141 31.2279 5.84349 34.25 9.57141 34.25H27.5714C31.2993 34.25 34.3214 31.2279 34.3214 27.5V9.5C34.3214 5.77208 31.2993 2.75 27.5714 2.75Z"
@@ -301,7 +301,6 @@
             </svg>
         </a>
     </div>
-
 </div>
 <script>
     var poster = document.getElementById("poster");

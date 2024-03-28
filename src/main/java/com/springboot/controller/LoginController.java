@@ -21,12 +21,12 @@ public class LoginController {
     private final PasswordEncoder passwordEncoder;
     private final UserMapper userMapper;
 
-    @GetMapping("/mainpage")
+    @GetMapping("/mainpage") // 访问主页
     public String showlanding(){
         return "Mainpage";
     }
 
-    @GetMapping("/{page}")
+    @GetMapping("/{page}") //其他页面自定义跳转
     public String showPage(@PathVariable String page) {
         return page;
     }
@@ -88,7 +88,7 @@ public class LoginController {
             int affectedrows = userMapper.register(new User(userId, user.getTitle(), user.getFirstname(), user.getLastname(), user.getLocation(),
                     user.getEmail(), user.getAreacode(), user.getContact(), user.getPassword(), user.getTerms()));
             if (affectedrows > 0) {
-                return "login";
+                return "Login";
             } else {
                 errorMessage = "Registration failed, please try again";
                 model.addAttribute("errorMessage", errorMessage);

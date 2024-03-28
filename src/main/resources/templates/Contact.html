@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Document</title>
-    <link rel="stylesheet" th:href="@{/Login.css}" href="css/Login.css"/>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/Contact.css}" href="../static/Contact.css">
 </head>
 <body>
-<form th:action="@{login}" method="post" novalidate="novalidate">
+<form method="post" novalidate="novalidate">
     <div class="Banner">
         <div class="Nav">
-            <a th:href="@{mainpage}"><img th:src="@{/Logo2.png}" src="../static/Logo.png" alt="" id="logo"></a>
+            <a th:href="@{Mainpage}" href="Mainpage.html"><img th:src="@{/Logo2.png}" src="../Logo.png" alt="" id="logo"></a>
             <div class="Sub-Nav">
-                <a href="Bookproduct.html"><p>SHOP BOOK</p></a>
-                <a href="coffeeproduct.html"><p>COFFEE</p></a>
-                <a href="FAQ.html"><p>FAQ</p></a>
+                <a href="Bookproduct.html" th:href="@{Bookproduct}"><p>SHOP BOOK</p></a>
+                <a href="Coffeeproduct.html" th:href="@{Coffeeproduct}"><p>COFFEE</p></a>
+                <a href="FAQ.html" th:href="@{FAQ}"><p>FAQ</p></a>
             </div>
             <div class="Icon-Nav">
                 <a href="https://www.instagram.com/shanmu_cafe/">
@@ -31,7 +30,7 @@
                         />
                     </svg>
                 </a>
-                <a href="Contact.php">
+                <a th:href="@{Contact}" href="Contact.html">
                     <svg
                             width="17"
                             height="12"
@@ -45,7 +44,7 @@
                         />
                     </svg>
                 </a>
-                <a th:href="@{signup}">
+                <a th:href="@{login}"> <!--找模板文件-->
                     <svg
                             width="17"
                             height="16"
@@ -75,7 +74,7 @@
                         </defs>
                     </svg>
                 </a>
-                <a href="Shoppingcart.php">
+                <a th:href="@{Shoppingcart}" href="Shoppingcart.html">
                     <svg
                             width="19"
                             height="16"
@@ -113,67 +112,60 @@
         </div>
     </div>
     <div class="Coffee-Words">
-        <p>L</p>
+        <p>C</p>
         <p>O</p>
-        <p>G</p>
-        <p>I</p>
         <p>N</p>
+        <p>T</p>
+        <p>A</p>
+        <p>C</p>
+        <p>T</p>
     </div>
     <div class="Text1">
         <p>
-            If you are already a Café Biblioteca Family member, please enter your
-            login information.
+            If u face any problems, feel free to ask contact us
         </p>
+    </div>
+    <div class="Name-label">
+        <p>Name*</p>
+    </div>
+    <div class="Name-input">
+        <input type="text" name="name" id="" value="<?php if (isset($trimmed['name'])) echo $trimmed['name']; ?>"/>
     </div>
     <div class="Email-label">
-        <p>E-mail address*</p>
+        <p>Email*</p>
     </div>
     <div class="Email-input">
-        <input type="email" name="email" id="email" th:class="${errorMessage == 'Email not found' ? 'error' : ''}" th:placeholder="${errorMessage == 'Email not found' ? errorMessage : 'Your registered email'}"/>
+        <input type="email" name="email" id="" value="<?php if (isset($trimmed['email'])) echo $trimmed['email']; ?>"/>
     </div>
-    <div class="Password-label">
-        <p>Password*</p>
+    <div class="Contact-label">
+        <p>Contact*</p>
     </div>
-    <div class="Password-input">
-        <input type="password" name="password" id="password" th:class="${errorMessage == 'Password Wrong ! ' ? 'error' : ''}" th:placeholder="${errorMessage == 'Wrong password' ? errorMessage : 'Account password'}"/>
+    <div class="Contact-input">
+        <input type="tel" name="contact" id=""
+               value="<?php if (isset($trimmed['contact'])) echo $trimmed['contact']; ?>"/>
+    </div>
+    <div class="Message-label">
+        <p>Message*</p>
+    </div>
+    <div class="Message-input">
+        <textarea placeholder="Enter soemthing" name="message" value="<?php if (isset($trimmed['message'])) echo $trimmed['message']; ?>"></textarea>
     </div>
     <div class="Text2">
-        <p>All fields mark with an * are mandatory</p>
-    </div>
-    <div class="Login-button">
-        <span class="mas">LOGIN</span>
-        <button id="submit" type="submit" name="submit">LOGIN</button>
-    </div>
-    <div class="Remeber-me-box">
-        <input type="checkbox" name="" id=""/>
-        <label for="">Remember Me</label>
-    </div>
-    <div class="Text3">
-        <a href=""><p>FORGOT PASSWORD</p></a>
-    </div>
-    <div class="Text4">
-        <p>NEW MEMBER</p>
-    </div>
-    <div class="Text5">
         <p>
-            Create your personal account with us to become a member of the Café
-            Biblioteca Family.
+            All fields mark with an * are mandatory
         </p>
     </div>
-    <div class="Sign-button">
-        <span class="mas">CREATE AN ACCOUNT</span>
-        <a th:href="signup">
-            <button id="work" type="button" name="signin">CREATE AN ACCOUNT</button>
-        </a>
+    <div class="Submit-button">
+        <span class="mas">SUBMIT</span>
+        <button id="work" type="submit" name="submit">SUBMIT</button>
     </div>
     <br/><br/><br/>
     <div class="Bottom-Banner">
         <div class="img-container">
-            <a href="Mainpage.html"><img th:src="@{/Logo.png}" src="../static/Logo.png" alt=""></a>
+            <a href="Mainpage.html"><img src="Logo.png" alt=""></a>
         </div>
-
         <div class="Nav">
-            <img th:src="@{/footersign.png}" alt="">
+            <img src="footersign.png" alt="">
             <a href=""><p class="p1">TERMS OF USE</p></a>
             <a href=""><p class="p2">ABOUT US</p></a>
             <a href=""><p class="p3">PRIVACY POLICY</p></a>
@@ -223,10 +215,8 @@
                 </svg>
             </a>
         </div>
-
     </div>
 </form>
-</body>
 <script>
     window.onload = function () {
         var letters = document.querySelectorAll('.Coffee-Words p');
@@ -238,4 +228,5 @@
         });
     };
 </script>
+</body>
 </html>

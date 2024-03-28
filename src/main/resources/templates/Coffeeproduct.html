@@ -9,11 +9,11 @@
 <body>
 <div class="Banner">
     <div class="Nav">
-        <a href="Mainpage.html"><img id="logo" src="../static/Logo2.png" alt=""/></a>
+        <a th:href="@{Mainpage}" href="Mainpage.html"><img th:src="@{/Logo2.png}" src="../Logo.png" alt="" id="logo"></a>
         <div class="Sub-Nav">
-            <a href="Bookproduct.html"><p>SHOP BOOK</p></a>
-            <a href="coffeeproduct.html"><p>COFFEE</p></a>
-            <a href=""><p>FAQ</p></a>
+            <a href="Bookproduct.html" th:href="@{Bookproduct}"><p>SHOP BOOK</p></a>
+            <a href="Coffeeproduct.html" th:href="@{Coffeeproduct}"><p>COFFEE</p></a>
+            <a href="FAQ.html" th:href="@{FAQ}"><p>FAQ</p></a>
         </div>
         <div class="Icon-Nav">
             <a href="https://www.instagram.com/shanmu_cafe/">
@@ -30,7 +30,7 @@
                     />
                 </svg>
             </a>
-            <a href="Contact.php">
+            <a th:href="@{Contact}" href="Contact.html">
                 <svg
                         width="17"
                         height="12"
@@ -44,7 +44,7 @@
                     />
                 </svg>
             </a>
-            <a href="login.html">
+            <a th:href="@{login}"> <!--找模板文件-->
                 <svg
                         width="17"
                         height="16"
@@ -74,7 +74,7 @@
                     </defs>
                 </svg>
             </a>
-            <a href="Shoppingcart.php">
+            <a th:href="@{Shoppingcart}" href="Shoppingcart.html">
                 <svg
                         width="19"
                         height="16"

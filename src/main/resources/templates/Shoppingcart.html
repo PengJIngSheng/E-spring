@@ -1,111 +1,19 @@
-<?php
-session_set_cookie_params(0);
-session_start();
-require('include/db.php');
-
-$quantity_reached_5 = false;
-
-if (isset($_SESSION['loginuser'])) {
-    $name = "THE ART OF WAR";
-    $custid = $_SESSION['loginuser']['custid'];
-    $price = "34.50";
-    $price = floatval($price);
-    $protection = $_POST['protect'];
-
-    $stmt = $conn->prepare("SELECT `quantity` FROM `cart` WHERE `productname` = ? AND `custid` = ?");
-    $stmt->bind_param("ss", $name, $custid);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        $quantity = $row['quantity'];
-        if ($quantity >= 5) {
-            $quantity_reached_5 = true;
-        }
-    }
-    if ($_SERVER["REQUEST_METHOD"] == 'POST' && isset($_POST["submit"])) {
-        $trimmed = array_map('trim', $_POST);
-
-//        $name = "WUTHERING HEIGHTS";
-        if ($quantity_reached_5) {
-            $gift = $_POST['gift'];
-            $stmt = $conn->prepare("UPDATE `cart` SET `protection` = ?, `giftpaper` = ? WHERE `productname` = ? AND `custid` = ?");
-            $stmt->bind_param("ssss", $protection, $gift, $name, $custid);
-            if ($stmt->execute()) {
-                echo '<script>alert("Updated Cart");</script>';
-            } else {
-                echo '<script>alert("Cannot update cart");</script>';
-            }
-        } else if (isset($trimmed['quantity']) && is_numeric($trimmed['quantity'])) {
-            $new_quantity = $trimmed['quantity'];
-
-            if ($new_quantity > 0 && $new_quantity <= 5) {
-                $gift = $_POST['gift'];
-                $img = "BookProduct/BP1.png";
-
-                if ($result->num_rows > 0) {
-                    if ($quantity < 5) {
-                        $sum_quantity = $quantity + $new_quantity;
-                        if ($sum_quantity <= 5) {
-                            $new_quantity = $sum_quantity;
-                            $stmt = $conn->prepare("UPDATE `cart` SET `quantity` = ?, `protection` = ?, `giftpaper` = ? WHERE `productname` = ? AND `custid` = ?");
-                            $stmt->bind_param("issss", $new_quantity, $protection, $gift, $name, $custid);
-                            if ($stmt->execute()) {
-                                $quantity_reached_5 = ($new_quantity == 5);
-                                echo '<script>alert("Updated Cart");</script>';
-                            } else {
-                                echo '<script>alert("Cannot update cart");</script>';
-                            }
-                        } else {
-                            echo '<script>alert("Cannot save more than 5 books");</script>';
-                        }
-                    } else {
-                        $stmt = $conn->prepare("UPDATE `cart` SET `protection` = ?, `giftpaper` = ? WHERE `productname` = ? AND `custid` = ?");
-                        $stmt->bind_param("ssss", $protection, $gift, $name, $custid);
-                        if ($stmt->execute()) {
-                            echo '<script>alert("Updated Cart");</script>';
-                        } else {
-                            echo '<script>alert("Cannot update cart");</script>';
-                        }
-                    }
-                } else {
-                    $stmt = $conn->prepare("INSERT INTO `cart` (custid, productname, price, protection, quantity, giftpaper, productimage) values (?, ?, ?, ?, ?, ?, ?)");
-                    $stmt->bind_param("sssssss", $custid, $name, $price, $protection, $new_quantity, $gift, $img);
-                    if ($stmt->execute()) {
-                        $quantity_reached_5 = ($new_quantity == 5);
-                        echo '<script>alert("Saved to cart");</script>';
-                    } else {
-                        echo '<script>alert("Cannot save to cart");</script>';
-                    }
-                }
-            } else {
-                echo '<script>alert("Each user can only purchase 5 books");</script>';
-            }
-        }
-    }
-} else {
-    if ($_SERVER["REQUEST_METHOD"] == 'POST' && isset($_POST["submit"])) {
-        echo '<script>alert("Login First to save to cart");window.location.href="login.php";</script>';
-    }
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="css/Bookdetails.css">
+    <link rel="stylesheet" href="../static/Shoppingcart.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 <div class="Banner">
     <div class="Nav">
-
-        <a href="Mainpage.html"><img id="logo" src="Logo2.png" alt=""/></a>
+        <a th:href="@{Mainpage}" href="Mainpage.html"><img th:src="@{/Logo2.png}" src="../Logo.png" alt="" id="logo"></a>
         <div class="Sub-Nav">
-            <a href="Bookproduct.html"><p>SHOP BOOK</p></a>
-            <a href="coffeeproduct.html"><p>COFFEE</p></a>
-            <a href="FAQ.html"><p>FAQ</p></a>
+            <a href="Bookproduct.html" th:href="@{Bookproduct}"><p>SHOP BOOK</p></a>
+            <a href="Coffeeproduct.html" th:href="@{Coffeeproduct}"><p>COFFEE</p></a>
+            <a href="FAQ.html" th:href="@{FAQ}"><p>FAQ</p></a>
         </div>
         <div class="Icon-Nav">
             <a href="https://www.instagram.com/shanmu_cafe/">
@@ -122,7 +30,7 @@ if (isset($_SESSION['loginuser'])) {
                     />
                 </svg>
             </a>
-            <a href="Contact.php">
+            <a th:href="@{Contact}" href="Contact.html">
                 <svg
                         width="17"
                         height="12"
@@ -136,7 +44,7 @@ if (isset($_SESSION['loginuser'])) {
                     />
                 </svg>
             </a>
-            <a href="login.php">
+            <a th:href="@{login}"> <!--找模板文件-->
                 <svg
                         width="17"
                         height="16"
@@ -166,7 +74,7 @@ if (isset($_SESSION['loginuser'])) {
                     </defs>
                 </svg>
             </a>
-            <a href="Shoppingcart.php">
+            <a th:href="@{Shoppingcart}" href="Shoppingcart.html">
                 <svg
                         width="19"
                         height="16"
@@ -203,130 +111,81 @@ if (isset($_SESSION['loginuser'])) {
         </div>
     </div>
 </div>
-<div class="Keeper">
-    <div class="Product-image">
-        <p class="p1">01</p>
-        <p class="p2">/</p>
-        <p class="p3">02</p>
-        <img src="BookProduct/BP1.png" alt="">
-        <div class="Left-button">
-            <button><</button>
-        </div>
-        <div class="Right-button">
-            <button>></button>
-        </div>
+<div class="Coffee-Words">
+    <p>C</p>
+    <p>A</p>
+    <p>R</p>
+    <p>T</p>
+</div>
+<a class="a1" href="Bookproduct.html"><p class="p1">Continue shopping</p></a>
+<div class=header>
+    <p class="p2">PRODUCT</p>
+    <div class="subh">
+        <p>PRICE</p>
+        <p for="new-quantity">QUANTITY</p>
+        <p>SUM</p>
     </div>
-    <form action="Book1details.php" method="post">
-        <div class="Product-info">
-            <div class="Bookinfo">
-                <p class="Name">THE ART OF WAR</p>
-                <p class="About">Sun Tzu. US</p>
-                <p class="Type">BOOK: ADVENTURE / HORROR</p>
-                <p class="Price">¥ 34.50<span>税込</span></p>
+</div>
+<form action="Shoppingcart.php" method="post">
+    <?php $total_price = 0;
+    foreach ($data as $product):
+        $total_price += $product['sum']; ?>
+        <div class="Product1">
+            <div class="Product-name-info">
+                <img class="Product-img" src="<?php echo htmlspecialchars($product['productimage']); ?>">
+                <div class="Product-name">
+                    <div class="title"><span><?php echo htmlspecialchars($product['productname']); ?></span></div>
+                    <a href="?delete=1&productname=<?php echo urlencode($product['productname']); ?>"
+                       class="p1">deletion</a>
+                </div>
             </div>
-            <div class="desc">
-                <p>Organise your library any way you like. With collections, every one of
-                    your books is exactly where you want it. Create your own collections and
-                    get to them easily at any time. You can also revisit an old favourite
-                    you’ve already read in the Finished collection. The Reading Now tab makes
-                    it easy to get to the right page in an instant, whether you’re immersed in
-                    a single story or bouncing between books. It’s also where you’ll find
-                    personalised recommendations based on what you’ve been reading.
-                </p>
-            </div>
-            <div class="extra-protection">
-                <p class="p1">Need Extra Protection ?</p>
-                <div class="Link">
-                    <input class="i1" type="button" placeholder="Bubble Plastic" value="Bubble Plastic">
-                    <input class="i2" type="button" placeholder="Wrapping (free)" value="Wrapping (free)">
-                    <input type="hidden" name="protect" id="protect">
+            <div class="Product-price-info">
+                <div class="price">￥<span><?php echo htmlspecialchars($product['price']); ?></span></div>
+                <div class="quantity">
+                    <input id="new-quantity-<?php echo htmlspecialchars($product['productname']); ?>"
+                           name="new_quantity[<?php echo htmlspecialchars($product['productname']); ?>]" type="text"
+                           value="<?php echo htmlspecialchars($product['quantity']); ?>">
                 </div>
-                <p class="p2">Add a gift paper</p>
-                <select name="gift">
-                    <option value="No gift-paper">No gift-paper</option>
-                    <option value="With gift-paper">With gift-paper</option>
-                </select>
-                <?php if ($quantity_reached_5 || !$result->num_rows) : ?>
-                    <input id="quantity" type="number" name="quantity"
-                           placeholder="Not >5" <?php echo $quantity_reached_5 ? 'disabled' : ''; ?>>
-                <?php else : ?>
-                    <input id="quantity" type="number" name="quantity" placeholder="Quantity">
-                <?php endif; ?>
-                <div class="Link2">
-                    <button type="submit" value="submit" name="submit">ADD TO CART</button>
-                </div>
-                <p class="p3">Publisher</p>
-                <div class="desc2">
-                    <p>Apple.INC, America limited
-                    </p>
-                </div>
+                <div class="sum">￥<span><?php echo htmlspecialchars($product['sum']); ?></span></div>
+                <input type="hidden" name="productname"
+                       value="<?php echo htmlspecialchars($product['productname']); ?>">
+                <button name="update[<?php echo htmlspecialchars($product['productname']); ?>]" type="submit"
+                        style="display: none;"></button>
             </div>
         </div>
-    </form>
+    <?php endforeach; ?>
+    <div class="Sub">
+        <p>Subtotal</p>
+        <span>￥<?php echo htmlspecialchars($total_price); ?></span>
+    </div>
+</form>
+<div class="Link2">
+    <a href="Cashpay.php">
+        <button>CASH</button>
+    </a>
+    <a href="Cardpay.php">
+        <button>CARD</button>
+    </a>
 </div>
 <script>
-    var img = document.querySelector('.Product-image img');
-    var p1 = document.querySelector('.Product-image .p1');
-    var images = ['BookProduct/BP1.png', 'image2.jpg'];
-    var currentIndex = 0;
-    var leftButton = document.querySelector('.Product-image .Left-button button');
-    var rightButton = document.querySelector('.Product-image .Right-button button');
-    leftButton.addEventListener('click', function () {
-        if (currentIndex > 0) {
-            currentIndex--;
-            img.src = images[currentIndex];
-            p1.textContent = '0' + (currentIndex + 1);
-        }
-    });
-
-    rightButton.addEventListener('click', function () {
-        if (currentIndex < images.length - 1) {
-            currentIndex++;
-            img.src = images[currentIndex];
-            p1.textContent = '0' + (currentIndex + 1);
-        }
-    })
-    ;
-
-    const buttons = document.querySelectorAll('.Link input[type="button"]');
-    const protectInput = document.querySelector('#protect');
-    let selectedValue = localStorage.getItem('selectedValue');
-
-    buttons.forEach(button => {
-        if (button.value === selectedValue) {
-            button.classList.add('selected');
-            protectInput.value = button.value;
-        }
-
-        button.addEventListener('click', () => {
-            const selectedValue = button.value;
-            buttons.forEach(b => b.classList.remove('selected'));
-            button.classList.add('selected');
-            protectInput.value = button.value;
-            localStorage.setItem('selectedValue', selectedValue);
-            // Send Ajax request
-            const xhr = new XMLHttpRequest();
-            xhr.open('POST', 'Book1details.php');
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.onload = function () {
-                if (xhr.status === 200) {
-                } else if (xhr.status !== 200) {
-                }
-            };
-            xhr.send(encodeURI(`protect=${selectedValue}`));
+    window.onload = function () {
+        var letters = document.querySelectorAll('.Coffee-Words p');
+        letters.forEach(function (letter, index) {
+            setTimeout(function () {
+                letter.style.opacity = '1';
+                letter.style.transform = 'translateY(0)';
+            }, index * 100);
+        });
+    };
+    document.querySelectorAll('input[name^=new_quantity]').forEach(function (input) {
+        input.addEventListener('keydown', function (event) {
+            if (event.key === 'Enter') {
+                event.preventDefault(); // Prevent the form from submitting
+                var productName = this.getAttribute('name').split('[')[1].split(']')[0];
+                document.querySelector('button[name="update[' + productName + ']"]').click();
+            }
         });
     });
-
-    window.onload = function () {
-        var quantityInput = document.getElementById('quantity');
-        var quantityReached5 = <?php echo $quantity_reached_5 ? 'true' : 'false'; ?>;
-
-        if (quantityReached5) {
-            quantityInput.disabled = true;
-            quantityInput.style.backgroundColor = '#000000';
-            quantityInput.placeholder = '5';
-        }
-    };
 </script>
 </body>
 </html>
