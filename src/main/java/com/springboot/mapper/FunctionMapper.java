@@ -1,13 +1,15 @@
 package com.springboot.mapper;
 
+import com.springboot.pojo.Product;
 import com.springboot.pojo.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
-import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Mapper
-public interface UserMapper {
+public interface FunctionMapper {
 
     @Insert("insert into `user` (custid, title, firstname, lastname, location, email, areacode, contact, password, terms) " +
             "values (#{custid},#{title},#{firstname},#{lastname},#{location},#{email},#{areacode},#{contact},#{password},#{terms})")
@@ -22,4 +24,9 @@ public interface UserMapper {
     @Select("select * from `user` where email = #{email} and password = #{password}")
     User login(String email, String password);
 
+    @Select("SELECT productimage FROM `product` where productid = #{id}")
+    List<Product> getproductimage(String id);
+
+    @Select("SELECT * FROM `product` WHERE productid = #{id}")
+    Product getProductById(String id);
 }

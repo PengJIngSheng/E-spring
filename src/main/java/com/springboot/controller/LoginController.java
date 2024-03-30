@@ -1,8 +1,9 @@
 package com.springboot.controller;
 
-import com.springboot.mapper.UserMapper;
+import com.springboot.mapper.FunctionMapper;
 import com.springboot.pojo.User;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,10 +20,12 @@ import java.util.ArrayList;
 public class LoginController {
 
     private final PasswordEncoder passwordEncoder;
-    private final UserMapper userMapper;
+
+    @Autowired
+    private final FunctionMapper functionMapper;
 
     @GetMapping("/mainpage") // 访问主页
-    public String showlanding(){
+    public String showlanding() {
         return "Mainpage";
     }
 
@@ -42,7 +45,7 @@ public class LoginController {
                 return showPage("login");
             }
 
-            User foundUser = userMapper.findByEmail(user.getEmail());
+            User foundUser = functionMapper.findByEmail(user.getEmail());
             if (foundUser == null) {
                 errorMessage = "Email not found";
             } else {
@@ -53,7 +56,7 @@ public class LoginController {
                     // 将新的Authentication对象保存到SecurityContext中
                     SecurityContextHolder.getContext().setAuthentication(auth);
                     System.out.println(SecurityContextHolder.getContext().getAuthentication());
-                    System.out.println(((User)auth.getPrincipal()).getCustid()); // 获取用户登录状态的ID
+                    System.out.println(((User) auth.getPrincipal()).getCustid()); // 获取用户登录状态的ID
                     return showlanding();
                 } else {
                     errorMessage = "Wrong password";
@@ -82,10 +85,10 @@ public class LoginController {
             }
 
             user.setPassword(passwordEncoder.encode(user.getPassword()));
-            String maxCustId = userMapper.getMaxCustId();
+            String maxCustId = functionMapper.getMaxCustId();
             int userCount = maxCustId == null ? 1001 : Integer.parseInt(maxCustId) + 1;
             String userId = "C" + userCount;
-            int affectedrows = userMapper.register(new User(userId, user.getTitle(), user.getFirstname(), user.getLastname(), user.getLocation(),
+            int affectedrows = functionMapper.register(new User(userId, user.getTitle(), user.getFirstname(), user.getLastname(), user.getLocation(),
                     user.getEmail(), user.getAreacode(), user.getContact(), user.getPassword(), user.getTerms()));
             if (affectedrows > 0) {
                 return "Login";
