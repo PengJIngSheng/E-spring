@@ -23,7 +23,7 @@ mvc:
   view:
     prefix: /
     suffix: .html
-    static-path-pattern: /static/**
+    static-path-pattern: /resources/**
 
 freemarker:
   suffix: .html

@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 @Controller
 @AllArgsConstructor
-@RequestMapping("/demo")
+//@RequestMapping("demo")
 public class LoginController {
 
     private final PasswordEncoder passwordEncoder;
