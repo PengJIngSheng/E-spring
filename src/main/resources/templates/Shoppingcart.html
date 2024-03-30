@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="../static/css/Shoppingcart.css">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Document</title>
+    <link rel="shortcut icon" th:href="@{/images/favicon.ico}"/>
+    <link rel="stylesheet" th:href="@{/css/Shoppingcart.css}"/> <!--需要写杠是为了找静态文件-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -117,7 +119,7 @@
     <p>R</p>
     <p>T</p>
 </div>
-<a class="a1" href="Bookproduct.html"><p class="p1">Continue shopping</p></a>
+<a class="a1" th:href="@{Bookproduct}"><p class="p1">Continue shopping</p></a>
 <div class=header>
     <p class="p2">PRODUCT</p>
     <div class="subh">
