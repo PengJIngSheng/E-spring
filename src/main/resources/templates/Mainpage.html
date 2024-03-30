@@ -4,13 +4,15 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Document</title>
+    <link rel="shortcut icon" th:href="@{/images/favicon.ico}"/>
     <link rel="stylesheet" th:href="@{/css/Mainpage.css}"/> <!--需要写杠是为了找静态文件-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 <div class="Banner">
     <div class="Nav">
-        <a th:href="@{mainpage}" href="Mainpage.html"><img th:src="@{/Logo2.png}" src="../Logo.png" alt="" id="logo"></a>
+        <a th:href="@{mainpage}" href="Mainpage.html"><img th:src="@{/images/Logo2.png}" src="../Logo.png" alt=""
+                                                           id="logo"></a>
         <div class="Sub-Nav">
             <a href="Bookproduct.html" th:href="@{Bookproduct}"><p>SHOP BOOK</p></a>
             <a href="Coffeeproduct.html" th:href="@{Coffeeproduct}"><p>COFFEE</p></a>
@@ -115,7 +117,7 @@
 <div class="line-container">
     <div class="vertical-line" id="line"></div>
 </div>
-<img id="poster" th:src="@{/封面.png}" src="../static/封面.png" alt=""/>
+<img id="poster" th:src="@{/images/封面.png}" src="../static/images/封面.png" alt=""/>
 <div class="Coffee-Part">
     <div class="Coffee-Words">
         <p>C</p>
@@ -126,9 +128,9 @@
         <p>E</p>
     </div>
     <div class="Coffee-Imagelink">
-        <img th:src="@{/Capuchino.png}" alt=""/>
-        <img th:src="@{/latte.png}" alt=""/>
-        <img th:src="@{/espresso.png}" alt=""/>
+        <img th:src="@{/images/Capuchino.png}" alt=""/>
+        <img th:src="@{/images/latte.png}" alt=""/>
+        <img th:src="@{/images/espresso.png}" alt=""/>
     </div>
     <div class="Paragraph">
         <div class="p1">
@@ -165,7 +167,7 @@
 </div>
 <div class="Book-Part">
     <div class="Book1">
-        <img th:src="@{/BP1.png}" alt="" class="scroll-image"/>
+        <img th:src="@{/images/BP1.png}" alt="" class="scroll-image"/>
         <div class="Book1-info">
             <div class="Booknum">
                 <div class="t1">01</div>
@@ -215,11 +217,11 @@
                 </a>
             </div>
         </div>
-        <img th:src="@{/BP3.png}" alt="" class="scroll-image2"/>
+        <img th:src="@{/images/BP3.png}" alt="" class="scroll-image2"/>
     </div>
     <div class="scroll-trigger2"></div>
     <div class="Book3">
-        <img th:src="@{/BP5.png}" alt="" class="scroll-image3"/>
+        <img th:src="@{/images/BP5.png}" alt="" class="scroll-image3"/>
         <div class="Book3-info">
             <div class="Booknum">
                 <div class="t1">03</div>
@@ -248,10 +250,11 @@
 </div>
 <div class="Bottom-Banner">
     <div class="img-container">
-        <a th:href="@{Mainpage}" href="Mainpage.html"><img th:src="@{/Logo.png}" src="../static/Logo.png" alt=""></a>
+        <a th:href="@{Mainpage}" href="Mainpage.html"><img th:src="@{/images/Logo.png}" src="../static/images/Logo.png"
+                                                           alt=""></a>
     </div>
     <div class="Nav">
-        <img th:src="@{/footersign.png}" alt="">
+        <img th:src="@{/images/footersign.png}" alt="">
         <a href=""><p class="p1">TERMS OF USE</p></a>
         <a href=""><p class="p2">ABOUT US</p></a>
         <a href=""><p class="p3">PRIVACY POLICY</p></a>

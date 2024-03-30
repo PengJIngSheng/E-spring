@@ -4,13 +4,14 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Document</title>
-    <link rel="stylesheet" th:href="@{/Bookproduct.css}"/> <!--需要写杠是为了找静态文件-->
+    <link rel="shortcut icon" th:href="@{/images/favicon.ico}"/>
+    <link rel="stylesheet" th:href="@{/css/Bookproduct.css}"/> <!--需要写杠是为了找静态文件-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 <div class="Banner">
     <div class="Nav">
-        <a th:href="@{Mainpage}" href="Mainpage.html"><img th:src="@{/Logo2.png}" src="../Logo.png" alt="" id="logo"></a>
+        <a th:href="@{Mainpage}" href="Mainpage.html"><img th:src="@{/images/Logo2.png}" src="../Logo.png" alt="" id="logo"></a>
         <div class="Sub-Nav">
             <a href="Bookproduct.html" th:href="@{Bookproduct}"><p>SHOP BOOK</p></a>
             <a href="Coffeeproduct.html" th:href="@{Coffeeproduct}"><p>COFFEE</p></a>
@@ -115,7 +116,7 @@
 <div class="line-container">
     <div class="vertical-line" id="line"></div>
 </div>
-<img id="poster" src="../Bookposter.png" alt=""/>
+<img id="poster" th:src="@{/images/Bookposter.png}" alt=""/>
 <div class="Product-Words">
     <p>P</p>
     <p>R</p>
@@ -155,7 +156,7 @@
 </div>
 <div class="Product-list">
     <div class="Product1">
-        <a th:href="@{'/Bookdetails/' + 'B1001'}"><img src="../BookProduct/BP1.png" alt=""></a>
+        <a th:href="@{'/Bookdetails/' + 'B1001'}"><img src="../bookProduct/BP1.png" alt=""></a>
         <div class="Product-info">
             <div class="desc">
                 <p class="Name">THE ART OF WAR</p>
@@ -167,7 +168,7 @@
         </div>
     </div>
     <div class="Product2">
-        <a th:href="@{Boo2kdetails}" ><img src="../BookProduct/BP2.png" alt=""></a>
+        <a th:href="@{Boo2kdetails}" ><img src="../bookProduct/BP2.png" alt=""></a>
         <div class="Product-info" id="P1002">
             <div class="desc">
                 <p class="Name">PRIDE AND PREJU...</p>
@@ -179,7 +180,7 @@
         </div>
     </div>
     <div class="Product3">
-        <a href="Book3details.php"><img src="../BookProduct/BP3.png" alt=""></a>
+        <a href="Book3details.php"><img src="../bookProduct/BP3.png" alt=""></a>
         <div class="Product-info">
             <div class="desc">
                 <p class="Name">EMMA</p>
@@ -191,7 +192,7 @@
         </div>
     </div>
     <div class="Product4">
-        <a href="Book4details.php"><img src="../BookProduct/BP4.png" alt=""></a>
+        <a href="Book4details.php"><img src="../bookProduct/BP4.png" alt=""></a>
         <div class="Product-info">
             <div class="desc">
                 <p class="Name">WUTHERING HEIG..</p>
@@ -203,7 +204,7 @@
         </div>
     </div>
     <div class="Product5">
-        <a href="Book5details.php"> <img src="../BookProduct/BP5.png" alt=""></a>
+        <a href="Book5details.php"> <img src="../bookProduct/BP5.png" alt=""></a>
         <div class="Product-info">
             <div class="desc">
                 <p class="Name">MOBY DICK</p>
@@ -215,7 +216,7 @@
         </div>
     </div>
     <div class="Product6">
-        <a href="Book6details.php"><img src="../BookProduct/BP6.png" alt=""></a>
+        <a href="Book6details.php"><img src="../bookProduct/BP6.png" alt=""></a>
         <div class="Product-info">
             <div class="desc">
                 <p class="Name">DREAM PSYCHO..</p>
@@ -227,7 +228,7 @@
         </div>
     </div>
     <div class="Product7">
-        <a href="Book7details.php"><img src="../BookProduct/BP7.png" alt=""></a>
+        <a href="Book7details.php"><img src="../bookProduct/BP7.png" alt=""></a>
         <div class="Product-info">
             <div class="desc">
                 <p class="Name">THE ODYSSEY</p>
@@ -239,7 +240,7 @@
         </div>
     </div>
     <div class="Product8">
-        <a href="Book8details.php"> <img src="../BookProduct/BP8.png" alt=""></a>
+        <a href="Book8details.php"> <img src="../bookProduct/BP8.png" alt=""></a>
         <div class="Product-info">
             <div class="desc">
                 <p class="Name">ADVENTURE OF S..</p>
@@ -251,7 +252,7 @@
         </div>
     </div>
     <div class="Product9">
-        <a href="Book9details.php"> <img src="../BookProduct/BP9.png" alt=""></a>
+        <a href="Book9details.php"> <img src="../bookProduct/BP9.png" alt=""></a>
         <div class="Product-info">
             <div class="desc">
                 <p class="Name">LITTLE WOMEN</p>
@@ -263,7 +264,7 @@
         </div>
     </div>
     <div class="Product10">
-        <a href="Book10details.php"> <img src="../BookProduct/BP10.png" alt=""></a>
+        <a href="Book10details.php"> <img src="../bookProduct/BP10.png" alt=""></a>
         <div class="Product-info">
             <div class="desc">
                 <p class="Name">THE WONDERF..</p>
@@ -275,7 +276,7 @@
         </div>
     </div>
     <div class="Product11">
-        <a href="Book11details.php"> <img src="../BookProduct/BP11.png" alt=""></a>
+        <a href="Book11details.php"> <img src="../bookProduct/BP11.png" alt=""></a>
         <div class="Product-info">
             <div class="desc">
                 <p class="Name">THE JUNGLE BOOK</p>
@@ -287,7 +288,7 @@
         </div>
     </div>
     <div class="Product12">
-        <a href="Book12details.php"><img src="../BookProduct/BP12.png" alt=""></a>
+        <a href="Book12details.php"><img src="../bookProduct/BP12.png" alt=""></a>
         <div class="Product-info">
             <div class="desc">
                 <p class="Name">THE INVISIBLE MAN</p>
@@ -301,10 +302,10 @@
 </div>
 <div class="Bottom-Banner">
     <div class="img-container">
-        <a href="Mainpage.html"><img src="../static/Logo.png" alt=""></a>
+        <a th:href="@{Mainpage}" href="Mainpage.html"><img th:src="@{/images/Logo.png}" src="../static/images/Logo.png" alt=""></a>
     </div>
     <div class="Nav">
-        <img src="../static/footersign.png" alt="">
+        <img th:src="@{/images/footersign.png}" alt="">
         <a href=""><p class="p1">TERMS OF USE</p></a>
         <a href=""><p class="p2">ABOUT US</p></a>
         <a href=""><p class="p3">PRIVACY POLICY</p></a>
@@ -354,7 +355,6 @@
             </svg>
         </a>
     </div>
-
 </div>
 <script>
     var images = document.querySelectorAll('.Product-list img');
