@@ -11,7 +11,8 @@
 <body>
 <div class="Banner">
     <div class="Nav">
-        <a th:href="@{Mainpage}" href="Mainpage.html"><img th:src="@{/images/Logo2.png}" src="../Logo.png" alt="" id="logo"></a>
+        <a th:href="@{Mainpage}" href="Mainpage.html"><img th:src="@{/images/Logo2.png}" src="../Logo.png" alt=""
+                                                           id="logo"></a>
         <div class="Sub-Nav">
             <a href="Bookproduct.html" th:href="@{Bookproduct}"><p>SHOP BOOK</p></a>
             <a href="Coffeeproduct.html" th:href="@{Coffeeproduct}"><p>COFFEE</p></a>
@@ -156,7 +157,7 @@
 </div>
 <div class="Product-list">
     <div class="Product1">
-        <a th:href="@{'/Bookdetails/' + 'B1001'}"><img src="../bookProduct/BP1.png" alt=""></a>
+        <a th:href="@{'/Bookdetails/' + 'B1001'}"><img th:src="@{/bookProduct/BP1.png}"></a>
         <div class="Product-info">
             <div class="desc">
                 <p class="Name">THE ART OF WAR</p>
@@ -168,7 +169,7 @@
         </div>
     </div>
     <div class="Product2">
-        <a th:href="@{Boo2kdetails}" ><img src="../bookProduct/BP2.png" alt=""></a>
+        <a th:href="@{'/Bookdetails/' + 'B1002'}"><img th:src="@{/bookProduct/BP2.png}"></a>
         <div class="Product-info" id="P1002">
             <div class="desc">
                 <p class="Name">PRIDE AND PREJU...</p>
@@ -302,7 +303,8 @@
 </div>
 <div class="Bottom-Banner">
     <div class="img-container">
-        <a th:href="@{Mainpage}" href="Mainpage.html"><img th:src="@{/images/Logo.png}" src="../static/images/Logo.png" alt=""></a>
+        <a th:href="@{Mainpage}" href="Mainpage.html"><img th:src="@{/images/Logo.png}" src="../static/images/Logo.png"
+                                                           alt=""></a>
     </div>
     <div class="Nav">
         <img th:src="@{/images/footersign.png}" alt="">

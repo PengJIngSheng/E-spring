@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" th:href="@{/Bookdetails.css}" href="css/Bookdetails.css">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Document</title>
+    <link rel="shortcut icon" th:href="@{/images/favicon.ico}"/>
+    <link rel="stylesheet" th:href="@{/css/Bookdetails.css}"/> <!--需要写杠是为了找静态文件-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 <div class="Banner">
     <div class="Nav">
-        <a th:href="@{/mainpage}" href="Mainpage.html"><img src="../Logo2.png" alt="" id="logo"></a>
+        <a th:href="@{/mainpage}" href="Mainpage.html"><img th:src="@{/images/Logo2.png}" src="../Logo.png" alt=""
+                                                           id="logo"></a>
         <div class="Sub-Nav">
-            <a href="Bookproduct.html" th:href="@{Bookproduct}"><p>SHOP BOOK</p></a>
-            <a href="Coffeeproduct.html" th:href="@{Coffeeproduct}"><p>COFFEE</p></a>
-            <a href="FAQ.html" th:href="@{FAQ}"><p>FAQ</p></a>
+            <a href="Bookproduct.html" th:href="@{/Bookproduct}"><p>SHOP BOOK</p></a>
+            <a href="Coffeeproduct.html" th:href="@{/Coffeeproduct}"><p>COFFEE</p></a>
+            <a href="FAQ.html" th:href="@{/FAQ}"><p>FAQ</p></a>
         </div>
         <div class="Icon-Nav">
             <a href="https://www.instagram.com/shanmu_cafe/">
@@ -29,7 +33,7 @@
                     />
                 </svg>
             </a>
-            <a th:href="@{Contact}" href="Contact.html">
+            <a th:href="@{/Contact}" href="Contact.html">
                 <svg
                         width="17"
                         height="12"
@@ -43,7 +47,7 @@
                     />
                 </svg>
             </a>
-            <a th:href="@{login}"> <!--找模板文件-->
+            <a th:href="@{/login}"> <!--找模板文件-->
                 <svg
                         width="17"
                         height="16"
@@ -73,7 +77,7 @@
                     </defs>
                 </svg>
             </a>
-            <a th:href="@{Shoppingcart}" href="Shoppingcart.html">
+            <a th:href="@{/Shoppingcart}" href="Shoppingcart.html">
                 <svg
                         width="19"
                         height="16"
@@ -115,7 +119,7 @@
         <p class="p1">01</p>
         <p class="p2">/</p>
         <p class="p3">02</p>
-        <img th:src="@{'../BookProduct/' + ${product.productimage}}" alt="">
+        <img th:src="@{'/' + ${product.productimage}}" alt="">
         <div class="Left-button">
             <button><</button>
         </div>
@@ -160,10 +164,11 @@
         </div>
     </form>
 </div>
-<script>
+<script th:inline="javascript">
+    /*@thymesVar*/ var i1 = /*[[${product.productimage}]]*/ 'default';
     var img = document.querySelector('.Product-image img');
     var p1 = document.querySelector('.Product-image .p1');
-    var images = ['../BookProduct/BP2.png', '../image2.jpg'];
+    var images = [i1, '../images/image2.jpg'];
     var currentIndex = 0;
     var leftButton = document.querySelector('.Product-image .Left-button button');
     var rightButton = document.querySelector('.Product-image .Right-button button');

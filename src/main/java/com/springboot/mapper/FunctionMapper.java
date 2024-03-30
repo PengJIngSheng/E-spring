@@ -2,9 +2,7 @@ package com.springboot.mapper;
 
 import com.springboot.pojo.Product;
 import com.springboot.pojo.User;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -29,4 +27,5 @@ public interface FunctionMapper {
 
     @Select("SELECT * FROM `product` WHERE productid = #{id}")
     Product getProductById(String id);
+
 }
