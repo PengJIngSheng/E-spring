@@ -12,7 +12,7 @@
 <div class="Banner">
     <div class="Nav">
         <a th:href="@{/mainpage}" href="Mainpage.html"><img th:src="@{/images/Logo2.png}" src="../Logo.png" alt=""
-                                                           id="logo"></a>
+                                                            id="logo"></a>
         <div class="Sub-Nav">
             <a href="Bookproduct.html" th:href="@{/Bookproduct}"><p>SHOP BOOK</p></a>
             <a href="Coffeeproduct.html" th:href="@{/Coffeeproduct}"><p>COFFEE</p></a>
@@ -133,7 +133,8 @@
                 <p class="Name" th:text="${product.productname}"></p>
                 <p class="About" th:text="${product.productauthour}"></p>
                 <p class="Type" th:text="${product.productype}"></p>
-                <p class="Price"><span>¥ <span th:text="${product.productprice}"></span></span><span id="japanese">税込</span></p>
+                <p class="Price"><span>¥ <span th:text="${product.productprice}"></span></span><span
+                        id="japanese">税込</span></p>
             </div>
             <div class="desc">
                 <p th:text="${product.productdec}"></p>
@@ -165,30 +166,56 @@
     </form>
 </div>
 <script th:inline="javascript">
-    /*@thymesVar*/ var i1 = `/${/*[[${product.productimage}]]*/ 'default'}`;
-    var originalImage = i1;
+    /*<![CDATA[*/
+    // 原始图片的路径
+    var originalImage = /*[[${product.productimage}]]*/ 'default';
+    originalImage = `/${originalImage}`;
+
+    // 获取图片元素
     var img = document.querySelector('.Product-image img');
+
+    // 获取图片编号元素
     var p1 = document.querySelector('.Product-image .p1');
-    var images = [i1, '../images/image2.jpg'];
+
+    // 图片数组，包含原始图片和另一张图片
+    var images = [originalImage, '../images/image2.jpg'];
+
+    // 当前显示的图片的索引
     var currentIndex = 0;
+
+    // 获取左按钮元素
     var leftButton = document.querySelector('.Product-image .Left-button button');
+
+    // 获取右按钮元素
     var rightButton = document.querySelector('.Product-image .Right-button button');
+
+    // 左按钮点击事件处理函数
     leftButton.addEventListener('click', function () {
+        // 如果当前显示的不是第一张图片
         if (currentIndex > 0) {
+            // 索引减1
             currentIndex--;
-            img.src = currentIndex === 0 ? originalImage : images[currentIndex];
+            // 显示上一张图片
+            img.src = images[currentIndex];
+            // 更新图片编号
             p1.textContent = '0' + (currentIndex + 1);
         }
     });
 
+    // 右按钮点击事件处理函数
     rightButton.addEventListener('click', function () {
+        // 如果当前显示的不是最后一张图片
         if (currentIndex < images.length - 1) {
+            // 索引加1
             currentIndex++;
+            // 显示下一张图片
             img.src = images[currentIndex];
+            // 更新图片编号
             p1.textContent = '0' + (currentIndex + 1);
         }
-    })
-    ;
+    });
+    /*]]>*/
+
 
     const buttons = document.querySelectorAll('.Link input[type="button"]');
     const protectInput = document.querySelector('#protect');
