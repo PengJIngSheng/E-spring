@@ -133,7 +133,7 @@
                 <p class="Name" th:text="${product.productname}"></p>
                 <p class="About" th:text="${product.productauthour}"></p>
                 <p class="Type" th:text="${product.productype}"></p>
-                <p class="Price" th:text="${product.productprice}"><span>税込</span></p>
+                <p class="Price"><span>¥ <span th:text="${product.productprice}"></span></span><span id="japanese">税込</span></p>
             </div>
             <div class="desc">
                 <p th:text="${product.productdec}"></p>
@@ -165,7 +165,8 @@
     </form>
 </div>
 <script th:inline="javascript">
-    /*@thymesVar*/ var i1 = /*[[${product.productimage}]]*/ 'default';
+    /*@thymesVar*/ var i1 = `/${/*[[${product.productimage}]]*/ 'default'}`;
+    var originalImage = i1;
     var img = document.querySelector('.Product-image img');
     var p1 = document.querySelector('.Product-image .p1');
     var images = [i1, '../images/image2.jpg'];
@@ -175,7 +176,7 @@
     leftButton.addEventListener('click', function () {
         if (currentIndex > 0) {
             currentIndex--;
-            img.src = images[currentIndex];
+            img.src = currentIndex === 0 ? originalImage : images[currentIndex];
             p1.textContent = '0' + (currentIndex + 1);
         }
     });
