@@ -11,7 +11,8 @@
 <body>
 <div class="Banner">
     <div class="Nav">
-        <a th:href="@{Mainpage}" href="Mainpage.html"><img th:src="@{/images/Logo2.png}" src="../Logo.png" alt="" id="logo"></a>
+        <a th:href="@{Mainpage}" href="Mainpage.html"><img th:src="@{/images/Logo2.png}" src="../Logo.png" alt=""
+                                                           id="logo"></a>
         <div class="Sub-Nav">
             <a href="Bookproduct.html" th:href="@{Bookproduct}"><p>SHOP BOOK</p></a>
             <a href="Coffeeproduct.html" th:href="@{Coffeeproduct}"><p>COFFEE</p></a>
@@ -156,11 +157,11 @@
 </div>
 <div class="Product-list">
     <div class="Product1">
-        <a href="C1details.php"><img src="../CoffeeProduct/c1.png" alt=""></a>
+        <a th:href="@{'/Productdetails/' + 'C1001'}"><img th:src="@{/coffeeProduct/c1.png}"></a>
         <div class="Product-info">
             <div class="desc">
                 <p class="Name">ESPRESSO FRAPPE</p>
-                <p class="About">Cold drinks</p>
+                <p class="About">Blended coffee</p>
             </div>
             <div class="price">
                 <p>¥17.50 <span>税込</span></p>
@@ -168,11 +169,11 @@
         </div>
     </div>
     <div class="Product2">
-        <a href="C2details.php"><img src="../CoffeeProduct/c2.png" alt=""></a>
+        <a th:href="@{'/Productdetails/' + 'C1002'}"><img th:src="@{/coffeeProduct/c2.png}"></a>
         <div class="Product-info">
             <div class="desc">
                 <p class="Name">GREEK CAPPUCCINO</p>
-                <p class="About">Cold drinks</p>
+                <p class="About">Fredo cappuccino</p>
             </div>
             <div class="price">
                 <p>¥19.50 <span>税込</span></p>
@@ -180,11 +181,11 @@
         </div>
     </div>
     <div class="Product3">
-        <a href="C3details.php"> <img src="../CoffeeProduct/c3.png" alt=""></a>
+        <a th:href="@{'/Productdetails/' + 'C1003'}"><img th:src="@{/coffeeProduct/c3.png}"></a>
         <div class="Product-info">
             <div class="desc">
                 <p class="Name">FREDDO SHAKEN</p>
-                <p class="About">Cold drinks</p>
+                <p class="About">Italian cappuccino</p>
             </div>
             <div class="price">
                 <p>¥20.50 <span>税込</span></p>
@@ -306,7 +307,8 @@
 </div>
 <div class="Bottom-Banner">
     <div class="img-container">
-        <a th:href="@{Mainpage}" href="Mainpage.html"><img th:src="@{/images/Logo.png}" src="../static/images/Logo.png" alt=""></a>
+        <a th:href="@{Mainpage}" href="Mainpage.html"><img th:src="@{/images/Logo.png}" src="../static/images/Logo.png"
+                                                           alt=""></a>
     </div>
     <div class="Nav">
         <img th:src="@{/images/footersign.png}" alt="">

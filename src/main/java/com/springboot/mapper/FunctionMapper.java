@@ -1,5 +1,6 @@
 package com.springboot.mapper;
 
+import com.springboot.pojo.Cart;
 import com.springboot.pojo.Product;
 import com.springboot.pojo.User;
 import org.apache.ibatis.annotations.*;
@@ -27,5 +28,9 @@ public interface FunctionMapper {
 
     @Select("SELECT * FROM `product` WHERE productid = #{id}")
     Product getProductById(String id);
+
+    @Insert("INSERT INTO cart(custid, productid, productname, productprice, productquantity, totalprice) " +
+            "VALUES(#{custid}, #{productid}, #{productname}, #{productprice}, #{productquantity}, #{totalprice})")
+    int insertCart(Cart cart);
 
 }

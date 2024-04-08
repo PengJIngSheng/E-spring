@@ -13,11 +13,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class Product {
 
-    private String produdctid;
+    private String productid;
 
     private String productname;
 
-    private String productauthour;
+    private String productsource;
 
     private String productype;
 

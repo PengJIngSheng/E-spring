@@ -29,7 +29,7 @@ public class LoginController {
         return "Mainpage";
     }
 
-    @GetMapping("/{page}") //其他页面自定义跳转
+    @GetMapping("{page}") //其他页面自定义跳转
     public String showPage(@PathVariable String page) {
         return page;
     }
@@ -38,7 +38,6 @@ public class LoginController {
     public String loginFunction(User user, Model model) {
         String errorMessage = null;
         try {
-            // 检查用户输入是否为空
             if (user.getEmail() == null || user.getPassword() == null) {
                 errorMessage = "Please enter email and password";
                 model.addAttribute("errorMessage", errorMessage);
@@ -49,14 +48,11 @@ public class LoginController {
             if (foundUser == null) {
                 errorMessage = "Email not found";
             } else {
-                // 使用PasswordEncoder验证密码
                 if (passwordEncoder.matches(user.getPassword(), foundUser.getPassword())) {
-                    // 创建一个新的Authentication对象
                     Authentication auth = new UsernamePasswordAuthenticationToken(foundUser, null, new ArrayList<>());
-                    // 将新的Authentication对象保存到SecurityContext中
                     SecurityContextHolder.getContext().setAuthentication(auth);
                     System.out.println(SecurityContextHolder.getContext().getAuthentication());
-                    System.out.println(((User) auth.getPrincipal()).getCustid()); // 获取用户登录状态的ID
+                    System.out.println(((User) auth.getPrincipal()).getCustid());
                     return showlanding();
                 } else {
                     errorMessage = "Wrong password";
@@ -76,7 +72,6 @@ public class LoginController {
     public String sufnction(User user, Model model) {
         String errorMessage = null;
         try {
-            // 检查用户输入是否为空
             if (user.getTitle() == null || user.getFirstname() == null || user.getLastname() == null || user.getLocation() == null ||
                     user.getEmail() == null || user.getAreacode() == null || user.getContact() == null || user.getPassword() == null || user.getTerms() == null) {
                 errorMessage = "All fields are required";
@@ -104,5 +99,4 @@ public class LoginController {
             return showPage("signup");
         }
     }
-
 }

@@ -13,13 +13,15 @@ public class ProductController {
     @Autowired
     private FunctionMapper functionMapper;
 
-    @RequestMapping("/Bookdetails/{id}")
+    @RequestMapping("/Productdetails/{id}")
     public String bookDetails(@PathVariable("id") String id, Model model) {
         Product product = functionMapper.getProductById(id);
+        product.setProductid(id);
+        System.out.println(product.getProductid());
         String imagePath = product.getProductimage();
         imagePath = imagePath.replace("\uFEFF", ""); //删除字符串中的BOM
         product.setProductimage(imagePath);
         model.addAttribute("product", product);
-        return "Bookdetails";
+        return "Productdetails";
     }
 }

@@ -11,7 +11,8 @@
 <body>
 <div class="Banner">
     <div class="Nav">
-        <a th:href="@{Mainpage}" href="Mainpage.html"><img th:src="@{/images/Logo2.png}" src="../Logo.png" alt="" id="logo"></a>
+        <a th:href="@{Mainpage}" href="Mainpage.html"><img th:src="@{/images/Logo2.png}" src="../Logo.png" alt=""
+                                                           id="logo"></a>
         <div class="Sub-Nav">
             <a href="Bookproduct.html" th:href="@{Bookproduct}"><p>SHOP BOOK</p></a>
             <a href="Coffeeproduct.html" th:href="@{Coffeeproduct}"><p>COFFEE</p></a>
@@ -129,36 +130,30 @@
     </div>
 </div>
 <form action="Shoppingcart.php" method="post">
-    <?php $total_price = 0;
-    foreach ($data as $product):
-        $total_price += $product['sum']; ?>
-        <div class="Product1">
-            <div class="Product-name-info">
-                <img class="Product-img" src="<?php echo htmlspecialchars($product['productimage']); ?>">
-                <div class="Product-name">
-                    <div class="title"><span><?php echo htmlspecialchars($product['productname']); ?></span></div>
-                    <a href="?delete=1&productname=<?php echo urlencode($product['productname']); ?>"
-                       class="p1">deletion</a>
-                </div>
-            </div>
-            <div class="Product-price-info">
-                <div class="price">￥<span><?php echo htmlspecialchars($product['price']); ?></span></div>
-                <div class="quantity">
-                    <input id="new-quantity-<?php echo htmlspecialchars($product['productname']); ?>"
-                           name="new_quantity[<?php echo htmlspecialchars($product['productname']); ?>]" type="text"
-                           value="<?php echo htmlspecialchars($product['quantity']); ?>">
-                </div>
-                <div class="sum">￥<span><?php echo htmlspecialchars($product['sum']); ?></span></div>
-                <input type="hidden" name="productname"
-                       value="<?php echo htmlspecialchars($product['productname']); ?>">
-                <button name="update[<?php echo htmlspecialchars($product['productname']); ?>]" type="submit"
-                        style="display: none;"></button>
+    <div class="Product1">
+        <div class="Product-name-info">
+            <img class="Product-img" src="">
+            <div class="Product-name">
+                <div class="title"><span></span></div>
+                <a href=""
+                   class="p1">deletion</a>
             </div>
         </div>
+        <div class="Product-price-info">
+            <div class="price">￥<span></span></div>
+            <div class="quantity">
+                <input name="" type="text" value="">
+            </div>
+            <div class="sum">￥<span><?php echo htmlspecialchars($product['sum']); ?></span></div>
+            <input type="hidden" name="productname"
+                   value="">
+            <button name="" type="submit" style="display: none;"></button>
+        </div>
+    </div>
     <?php endforeach; ?>
     <div class="Sub">
         <p>Subtotal</p>
-        <span>￥<?php echo htmlspecialchars($total_price); ?></span>
+        <span>￥</span>
     </div>
 </form>
 <div class="Link2">
