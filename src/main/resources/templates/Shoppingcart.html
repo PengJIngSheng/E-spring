@@ -120,6 +120,7 @@
     <p>R</p>
     <p>T</p>
 </div>
+
 <a class="a1" th:href="@{Bookproduct}"><p class="p1">Continue shopping</p></a>
 <div class=header>
     <p class="p2">PRODUCT</p>
@@ -129,22 +130,24 @@
         <p>SUM</p>
     </div>
 </div>
-<form action="Shoppingcart.php" method="post">
-    <div class="Product1">
+<form method="post" th:action="@{cartcart}">
+    <div th:each="cart : ${cartItems}">
         <div class="Product-name-info">
-            <img class="Product-img" src="">
+            <img class="Product-img" th:src="@{'/' + ${product.productimage}}">
             <div class="Product-name">
-                <div class="title"><span></span></div>
+                <div class="title"><span th:text="${cart.productname}" th:name="${cart.productname}"></span></div>
                 <a href=""
                    class="p1">deletion</a>
             </div>
         </div>
         <div class="Product-price-info">
-            <div class="price">￥<span></span></div>
+            <div class="price">¥ <span th:text="${cart.productprice}"
+                                       th:name="${cart.productprice}"></span></div>
             <div class="quantity">
-                <input name="" type="text" value="">
+                <input name="" type="text" th:text="${cart.productquantity}" value="">
             </div>
-            <div class="sum">￥<span><?php echo htmlspecialchars($product['sum']); ?></span></div>
+            <div class="sum">¥ <span th:text="${cart.totalprice}"
+                                     th:name="${cart.totalprice}"></span></div>
             <input type="hidden" name="productname"
                    value="">
             <button name="" type="submit" style="display: none;"></button>
@@ -155,15 +158,15 @@
         <p>Subtotal</p>
         <span>￥</span>
     </div>
+    <div class="Link2">
+        <a>
+            <button>CASH</button>
+        </a>
+        <a>
+            <button>CARD</button>
+        </a>
+    </div>
 </form>
-<div class="Link2">
-    <a href="Cashpay.php">
-        <button>CASH</button>
-    </a>
-    <a href="Cardpay.php">
-        <button>CARD</button>
-    </a>
-</div>
 <script>
     window.onload = function () {
         var letters = document.querySelectorAll('.Coffee-Words p');

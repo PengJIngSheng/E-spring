@@ -1,7 +1,6 @@
 package com.springboot.controller;
 
 
-import ch.qos.logback.core.model.Model;
 import com.springboot.mapper.FunctionMapper;
 import com.springboot.pojo.Cart;
 import com.springboot.pojo.Product;
@@ -16,9 +15,10 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @AllArgsConstructor
@@ -37,7 +37,10 @@ public class CartController {
             cart.setCustid(custid);
             Product product = functionMapper.getProductById(productId);
             cart.setProductid(product.getProductid());
-            int existingQuantity = functionMapper.getQuantityInCart(custid, productId);
+            Integer existingQuantity = functionMapper.getQuantityInCart(custid, productId);
+            if (existingQuantity == null) {
+                existingQuantity = 0;
+            }
             if (existingQuantity + cart.getProductquantity() > 10) {
                 return "redirect:/Productfunction/" + product.getProductid() + "?error=exceeded";
             }
@@ -53,6 +56,21 @@ public class CartController {
             return "redirect:/login";
         }
     }
+
+    @RequestMapping(value = "cartcart", method = {RequestMethod.GET, RequestMethod.POST})
+    public String showCartDetails(@RequestParam("product.productid") String productId, Model model, HttpServletRequest request) {
+        String custid = (String) request.getSession().getAttribute("custid");
+        if (custid != null) {
+            List<Cart> cartItems = functionMapper.getCartItems(custid);
+            Product product = functionMapper.getProductById(productId);
+            model.addAttribute("product", product);
+            model.addAttribute("cartItems", cartItems);
+            return "Shoppingcart";
+        } else {
+            return "redirect:/login";
+        }
+    }
+
 }
 
 
