@@ -9,6 +9,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
+
 <div class="Banner">
     <div class="Nav">
         <a th:href="@{Mainpage}" href="Mainpage.html"><img th:src="@{/images/Logo2.png}" src="../Logo.png" alt=""
@@ -120,8 +121,8 @@
     <p>R</p>
     <p>T</p>
 </div>
-
-<a class="a1" th:href="@{Bookproduct}"><p class="p1">Continue shopping</p></a>
+<a class="a1" th:href="@{Bookproduct}">
+    <p class="p1">Continue shopping</p></a>
 <div class=header>
     <p class="p2">PRODUCT</p>
     <div class="subh">
@@ -130,43 +131,39 @@
         <p>SUM</p>
     </div>
 </div>
-<form method="post" th:action="@{cartcart}">
-    <div th:each="cart : ${cartItems}">
-        <div class="Product-name-info">
-            <img class="Product-img" th:src="@{'/' + ${product.productimage}}">
-            <div class="Product-name">
-                <div class="title"><span th:text="${cart.productname}" th:name="${cart.productname}"></span></div>
-                <a href=""
-                   class="p1">deletion</a>
-            </div>
-        </div>
-        <div class="Product-price-info">
-            <div class="price">¥ <span th:text="${cart.productprice}"
-                                       th:name="${cart.productprice}"></span></div>
-            <div class="quantity">
-                <input name="" type="text" th:text="${cart.productquantity}" value="">
-            </div>
-            <div class="sum">¥ <span th:text="${cart.totalprice}"
-                                     th:name="${cart.totalprice}"></span></div>
-            <input type="hidden" name="productname"
-                   value="">
-            <button name="" type="submit" style="display: none;"></button>
+
+<!--    <input type="hidden" th:value="${product.productid}" name="product.productid">-->
+<div th:each="cart : ${cartItems}">
+    <div class="Product-name-info">
+        <img class="Product-img">
+        <div class="Product-name">
+            <div class="title"><span th:text="${cart.productname}" th:name="${cart.productname}"></span></div>
+            <a href=""
+               class="p1">deletion</a>
         </div>
     </div>
-    <?php endforeach; ?>
-    <div class="Sub">
-        <p>Subtotal</p>
-        <span>￥</span>
+    <div class="Product-price-info">
+        <div class="price">¥ <span th:text="${cart.productprice}"
+                                   th:name="${cart.productprice}"></span></div>
+        <div class="quantity">
+            <input name="" type="text" th:text="${cart.productquantity}" value="">
+        </div>
+        <div class="sum">¥ <span th:text="${cart.totalprice}"
+                                 th:name="${cart.totalprice}"></span></div>
     </div>
-    <div class="Link2">
-        <a>
-            <button>CASH</button>
-        </a>
-        <a>
-            <button>CARD</button>
-        </a>
-    </div>
-</form>
+</div>
+<div class="Sub">
+    <p>Subtotal</p>
+    <span>￥</span>
+</div>
+<div class="Link2">
+    <a>
+        <button>CASH</button>
+    </a>
+    <a>
+        <button>CARD</button>
+    </a>
+</div>
 <script>
     window.onload = function () {
         var letters = document.querySelectorAll('.Coffee-Words p');
@@ -177,15 +174,6 @@
             }, index * 100);
         });
     };
-    document.querySelectorAll('input[name^=new_quantity]').forEach(function (input) {
-        input.addEventListener('keydown', function (event) {
-            if (event.key === 'Enter') {
-                event.preventDefault(); // Prevent the form from submitting
-                var productName = this.getAttribute('name').split('[')[1].split(']')[0];
-                document.querySelector('button[name="update[' + productName + ']"]').click();
-            }
-        });
-    });
 </script>
 </body>
 </html>
