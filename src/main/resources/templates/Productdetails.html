@@ -135,7 +135,8 @@
                 <p class="Name" th:text="${product.productname}" th:name="${product.productname}"></p>
                 <p class="About" th:text="${product.productsource}"></p>
                 <p class="Type" th:text="${product.productype}"></p>
-                <p class="Price"><span>¥ <span th:text="${product.productprice}" th:name="${product.productprice}"></span></span><span
+                <p class="Price"><span>¥ <span th:text="${product.productprice}"
+                                               th:name="${product.productprice}"></span></span><span
                         id="japanese">税込</span></p>
             </div>
             <div class="desc">
@@ -223,6 +224,15 @@
         });
     });
 
+    (function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const error = urlParams.get('error');
+        if (error === 'exceeded') {
+            alert('你已经有了10个在购物车里。');
+        }
+    })();
+
+
     function validateAndSubmit() {
         var quantity = document.getElementById("quantity").value;
 
@@ -235,19 +245,10 @@
             }
             return false;
         } else {
-            // 检查购物车中的产品数量
-            const urlParams = new URLSearchParams(window.location.search);
-            const error = urlParams.get('error');
-            if (error === 'exceeded') {
-                alert('你已经有了10个在购物车里。');
-                return false;
-            }
-
             document.getElementById("protect").value = "Some value";
             return true;
         }
     }
-
 </script>
 </body>
 </html>
