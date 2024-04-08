@@ -1,8 +1,11 @@
 package com.springboot.controller;
 
 import com.springboot.mapper.FunctionMapper;
+import com.springboot.pojo.Cart;
 import com.springboot.pojo.User;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -16,55 +19,59 @@ import java.util.ArrayList;
 
 @Controller
 @AllArgsConstructor
-//@RequestMapping("demo")
 public class LoginController {
 
     private final PasswordEncoder passwordEncoder;
 
     @Autowired
     private final FunctionMapper functionMapper;
+    @Autowired
+    private SqlSessionTemplate sqlSessionTemplate;
 
-    @GetMapping("/mainpage") // 访问主页
+    @GetMapping("/mainpage")
     public String showlanding() {
         return "Mainpage";
     }
 
-    @GetMapping("{page}") //其他页面自定义跳转
+    @GetMapping("{page}")
     public String showPage(@PathVariable String page) {
         return page;
     }
 
-    @PostMapping("login")
-    public String loginFunction(User user, Model model) {
+    @PostMapping("loginfnc")
+    public String loginFunction(User user, Model model, HttpServletRequest request) {
         String errorMessage = null;
         try {
             if (user.getEmail() == null || user.getPassword() == null) {
                 errorMessage = "Please enter email and password";
                 model.addAttribute("errorMessage", errorMessage);
-                return showPage("login");
+                return showPage("Login");
             }
-
-            User foundUser = functionMapper.findByEmail(user.getEmail());
-            if (foundUser == null) {
+            User existingUser = functionMapper.findByEmail(user.getEmail());
+            if (existingUser == null) {
                 errorMessage = "Email not found";
+                model.addAttribute("errorMessage", errorMessage);
+                model.addAttribute("emailPlaceholder", "This email hasn't been registered");
+                return showPage("Login");
             } else {
-                if (passwordEncoder.matches(user.getPassword(), foundUser.getPassword())) {
-                    Authentication auth = new UsernamePasswordAuthenticationToken(foundUser, null, new ArrayList<>());
+                if (passwordEncoder.matches(user.getPassword(), existingUser.getPassword())) {
+                    Authentication auth = new UsernamePasswordAuthenticationToken(existingUser, null, new ArrayList<>());
                     SecurityContextHolder.getContext().setAuthentication(auth);
-                    System.out.println(SecurityContextHolder.getContext().getAuthentication());
-                    System.out.println(((User) auth.getPrincipal()).getCustid());
-                    return showlanding();
+                    request.getSession().setAttribute("custid", ((User) auth.getPrincipal()).getCustid());
+                    return "Mainpage";
                 } else {
                     errorMessage = "Wrong password";
                     System.out.println(user.getPassword() + "密码错误");
+                    model.addAttribute("passwordPlaceholder", errorMessage); // 将错误消息放进passwordPlaceholder中
+                    return showPage("Login");
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
             errorMessage = "Error";
+            model.addAttribute("errorMessage", errorMessage);
+            return showPage("login");
         }
-        model.addAttribute("errorMessage", errorMessage);
-        return showPage("login");
     }
 
 
@@ -74,8 +81,6 @@ public class LoginController {
         try {
             if (user.getTitle() == null || user.getFirstname() == null || user.getLastname() == null || user.getLocation() == null ||
                     user.getEmail() == null || user.getAreacode() == null || user.getContact() == null || user.getPassword() == null || user.getTerms() == null) {
-                errorMessage = "所有字段都是必填项";
-                model.addAttribute("errorMessage", errorMessage);
                 return showPage("signup");
             }
 

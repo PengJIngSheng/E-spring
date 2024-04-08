@@ -9,10 +9,11 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-<form th:action="@{login}" method="post" novalidate="novalidate">
+<form th:action="@{loginfnc}" method="post" novalidate="novalidate">
     <div class="Banner">
         <div class="Nav">
-            <a th:href="@{Mainpage}" href="Mainpage.html"><img th:src="@{/images/Logo2.png}" src="../Logo.png" alt="" id="logo"></a>
+            <a th:href="@{Mainpage}" href="Mainpage.html"><img th:src="@{/images/Logo2.png}" src="../Logo.png" alt=""
+                                                               id="logo"></a>
             <div class="Sub-Nav">
                 <a href="Bookproduct.html" th:href="@{Bookproduct}"><p>SHOP BOOK</p></a>
                 <a href="Coffeeproduct.html" th:href="@{Coffeeproduct}"><p>COFFEE</p></a>
@@ -131,13 +132,13 @@
         <p>E-mail address*</p>
     </div>
     <div class="Email-input">
-        <input type="email" name="email" id="email" th:class="${errorMessage == 'Email not found' ? 'error' : ''}" th:placeholder="${errorMessage == 'Email not found' ? errorMessage : 'Your registered email'}"/>
+        <input type="email" name="email" id="email" th:placeholder="${errorMessage}"/>
     </div>
     <div class="Password-label">
         <p>Password*</p>
     </div>
     <div class="Password-input">
-        <input type="password" name="password" id="password" th:class="${errorMessage == 'Password Wrong ! ' ? 'error' : ''}" th:placeholder="${errorMessage == 'Wrong password' ? errorMessage : 'Account password'}"/>
+        <input type="password" name="password" id="password" th:placeholder="${passwordPlaceholder}"/>
     </div>
     <div class="Text2">
         <p>All fields mark with an * are mandatory</p>
@@ -171,7 +172,8 @@
     <br/><br/><br/>
     <div class="Bottom-Banner">
         <div class="img-container">
-            <a th:href="@{Mainpage}" href="Mainpage.html"><img th:src="@{/images/Logo.png}" src="../static/images/Logo.png" alt=""></a>
+            <a th:href="@{Mainpage}" href="Mainpage.html"><img th:src="@{/images/Logo.png}"
+                                                               src="../static/images/Logo.png" alt=""></a>
         </div>
         <div class="Nav">
             <img th:src="@{/images/footersign.png}" alt="">

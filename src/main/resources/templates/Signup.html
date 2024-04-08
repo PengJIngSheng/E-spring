@@ -122,7 +122,7 @@
     <p>U</p>
     <p>P</p>
 </div>
-<form th:action="@{signup}" method="post" novalidate="novalidate" onsubmit="return validateForm()">
+<form th:action="@{signup}" th:object="${user}" method="post" novalidate="novalidate" onsubmit="return validateForm()">
     <div class="Text1">
         <p>
             Be the first to know about new coffee and books through your personal
@@ -165,7 +165,7 @@
         <p>E-mail *</p>
     </div>
     <div class="Email-input">
-        <input type="email" name="email" id="email" placeholder="Needed @">
+        <input type="email" name="email" id="email" placeholder="Needed @" th:placeholder="${errorMessage}">
     </div>
     <div class="Area-code-label">
         <p>Area code *</p>
@@ -313,7 +313,6 @@
             contact.value = "";
             return false;
         }
-
         return true;
     }
 

@@ -175,6 +175,12 @@ body {
     background: #fff;
 }
 
+.Email-input input::placeholder {
+    color: rosybrown;
+    font-family: 'Yu Gothic', serif;
+}
+
+
 .Password-label {
     position: relative;
     left: 510px;
@@ -188,6 +194,7 @@ body {
     line-height: 21.45px; /* 162.5% */
 }
 
+
 .Password-input input {
     position: relative;
     left: 50%;
@@ -200,6 +207,12 @@ body {
     border: 1.1px solid #ccc;
     background: #fff;
 }
+
+.Password-input input::placeholder {
+    color: rosybrown;
+    font-family: 'Yu Gothic', serif;
+}
+
 
 .Text2 {
     position: relative;

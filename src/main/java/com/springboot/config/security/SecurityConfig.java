@@ -25,20 +25,20 @@ public class SecurityConfig {
         http
                 .authorizeRequests(authorizeRequests ->
                         authorizeRequests
-                                .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll() // 允许访问静态资源
-                                .requestMatchers("/login").permitAll() // 允许所有用户访问登录页面
+                                .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
+                                .requestMatchers("/login").permitAll()
                 )
                 .formLogin(formLogin ->
                         formLogin
-                                .loginPage("/login") // 配置自定义的登录页面
-                                .successHandler(successHandler) // 设置登录成功处理器
+                                .loginPage("/login")
+                                .successHandler(successHandler)
                                 .permitAll()
                 )
                 .logout(logout -> logout
-                        .logoutUrl("/logout") // 配置注销URL
-                        .logoutSuccessUrl("/") // 注销成功后跳转到首页
-                        .invalidateHttpSession(true) // 注销时使HTTP会话无效
-                        .clearAuthentication(true) // 清除认证信息
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/")
+                        .invalidateHttpSession(true)
+                        .clearAuthentication(true)
                         .permitAll()
                 );
 
