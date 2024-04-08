@@ -74,7 +74,14 @@ public class LoginController {
         try {
             if (user.getTitle() == null || user.getFirstname() == null || user.getLastname() == null || user.getLocation() == null ||
                     user.getEmail() == null || user.getAreacode() == null || user.getContact() == null || user.getPassword() == null || user.getTerms() == null) {
-                errorMessage = "All fields are required";
+                errorMessage = "所有字段都是必填项";
+                model.addAttribute("errorMessage", errorMessage);
+                return showPage("signup");
+            }
+
+            User existingUser = functionMapper.findByEmail(user.getEmail());
+            if (existingUser != null) {
+                errorMessage = "This email has been registered";
                 model.addAttribute("errorMessage", errorMessage);
                 return showPage("signup");
             }
@@ -86,15 +93,16 @@ public class LoginController {
             int affectedrows = functionMapper.register(new User(userId, user.getTitle(), user.getFirstname(), user.getLastname(), user.getLocation(),
                     user.getEmail(), user.getAreacode(), user.getContact(), user.getPassword(), user.getTerms()));
             if (affectedrows > 0) {
+                System.out.println(user.getEmail());
                 return "Login";
             } else {
-                errorMessage = "Registration failed, please try again";
+                errorMessage = "注册失败，请重试";
                 model.addAttribute("errorMessage", errorMessage);
                 return showPage("signup");
             }
         } catch (Exception e) {
             e.printStackTrace();
-            errorMessage = "Error";
+            errorMessage = "错误";
             model.addAttribute("errorMessage", errorMessage);
             return showPage("signup");
         }
