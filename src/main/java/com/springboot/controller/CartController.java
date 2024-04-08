@@ -37,13 +37,17 @@ public class CartController {
             cart.setCustid(custid);
             Product product = functionMapper.getProductById(productId);
             cart.setProductid(product.getProductid());
-            if (cart.getProductquantity() < 1 || cart.getProductquantity() > 5) {
-                return "redirect:/Productfunction/" + product.getProductid();
+            int existingQuantity = functionMapper.getQuantityInCart(custid, productId);
+            if (existingQuantity + cart.getProductquantity() > 10) {
+                return "redirect:/Productfunction/" + product.getProductid() + "?error=exceeded";
             }
             cart.setProductname(product.getProductname());
             cart.setProductprice(product.getProductprice());
             cart.setTotalprice(cart.getProductprice() * cart.getProductquantity());
-            functionMapper.insertCart(cart);
+            int updatedRows = functionMapper.updateCart(cart);
+            if (updatedRows == 0) {
+                functionMapper.insertCart(cart);
+            }
             return "redirect:/Shoppingcart";
         } else {
             return "redirect:/login";

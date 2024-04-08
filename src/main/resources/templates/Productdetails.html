@@ -226,21 +226,28 @@
     function validateAndSubmit() {
         var quantity = document.getElementById("quantity").value;
 
-        // 检查数量是否在有效范围内
-        if (quantity < 1 || quantity > 5) {
+        if (quantity < 1 || quantity > 10) {
             // 显示相应的提示框
             if (quantity < 1) {
-                alert("物品数量不能低于1个");
+                alert("最少1个");
             } else {
-                alert("物品数量不能超过5个");
+                alert("最多10个");
             }
-            return false; // 阻止表单提交
+            return false;
         } else {
-            // 设置隐藏字段的值，以便将其包含在表单提交中
+            // 检查购物车中的产品数量
+            const urlParams = new URLSearchParams(window.location.search);
+            const error = urlParams.get('error');
+            if (error === 'exceeded') {
+                alert('你已经有了10个在购物车里。');
+                return false;
+            }
+
             document.getElementById("protect").value = "Some value";
-            return true; // 允许表单提交
+            return true;
         }
     }
+
 </script>
 </body>
 </html>

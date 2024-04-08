@@ -33,4 +33,9 @@ public interface FunctionMapper {
             "VALUES(#{custid}, #{productid}, #{productname}, #{productprice}, #{productquantity}, #{totalprice})")
     int insertCart(Cart cart);
 
+    @Select("SELECT SUM(productquantity) FROM cart WHERE custid = #{custid} AND productid = #{productid}")
+    int getQuantityInCart(@Param("custid") String custid, @Param("productid") String productid);
+
+    @Update("UPDATE cart SET productquantity = productquantity + #{productquantity}, totalprice = totalprice + #{totalprice} WHERE custid = #{custid} AND productid = #{productid}")
+    int updateCart(Cart cart);
 }
