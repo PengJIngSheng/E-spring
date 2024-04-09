@@ -7,24 +7,32 @@ import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
 @Controller
+@Transactional
 @AllArgsConstructor
 public class LoginController {
 
     private final PasswordEncoder passwordEncoder;
 
+
+    private final JavaMailSender emailSender;
+
     @Autowired
     private final FunctionMapper functionMapper;
+
     @Autowired
     private SqlSessionTemplate sqlSessionTemplate;
 
@@ -99,6 +107,7 @@ public class LoginController {
                     user.getEmail(), user.getAreacode(), user.getContact(), user.getPassword(), user.getTerms()));
             if (affectedrows > 0) {
                 System.out.println(user.getEmail());
+                sendWelcomeEmail(user.getEmail());
                 return "Login";
             } else {
                 errorMessage = "注册失败，请重试";
@@ -112,4 +121,14 @@ public class LoginController {
             return showPage("signup");
         }
     }
+
+    private void sendWelcomeEmail(String userEmail) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(userEmail);
+        message.setSubject("Welcome to be our Member!");
+        message.setText("Dear user,\n\nWelcome to our website!");
+
+        emailSender.send(message);
+    }
+
 }

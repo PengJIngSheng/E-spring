@@ -18,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -71,10 +72,23 @@ public class CartController {
         }
 
         List<Cart> cartItems = functionMapper.getCartItems(custid);
+        List<Product> products = new ArrayList<>();
+        for (Cart cart : cartItems) {
+            Product product = functionMapper.getProductById(cart.getProductid());
+            if (product != null) {
+                String imagePath = product.getProductimage();
+                imagePath = imagePath.replace("\uFEFF", ""); //删除字符串中的BOM
+                product.setProductimage(imagePath);
+                products.add(product);
+            }
+        }
         model.addAttribute("cartItems", cartItems);
+        model.addAttribute("products", products);
 
         return "Shoppingcart"; // 返回购物车页面
     }
+
+
 }
 
 

@@ -196,6 +196,12 @@ body {
     flex-shrink: 0;
 }
 
+.cart-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
 .Product1 {
     position: relative;
     top: 90.5px;

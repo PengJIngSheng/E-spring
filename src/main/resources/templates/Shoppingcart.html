@@ -133,9 +133,9 @@
 </div>
 
 <!--    <input type="hidden" th:value="${product.productid}" name="product.productid">-->
-<div th:each="cart : ${cartItems}">
+<div class="cart-container" th:each="cart, stat : ${cartItems}">
     <div class="Product-name-info">
-        <img class="Product-img">
+        <img class="Product-img" th:src="@{'/' + ${products[stat.index].productimage}}">
         <div class="Product-name">
             <div class="title"><span th:text="${cart.productname}" th:name="${cart.productname}"></span></div>
             <a href=""
@@ -143,13 +143,13 @@
         </div>
     </div>
     <div class="Product-price-info">
-        <div class="price">¥ <span th:text="${cart.productprice}"
-                                   th:name="${cart.productprice}"></span></div>
+        <div class="price"><span>¥ <span th:text="${cart.productprice}"
+                                         th:name="${cart.productprice}"></span></span></div>
         <div class="quantity">
             <input name="" type="text" th:text="${cart.productquantity}" value="">
         </div>
-        <div class="sum">¥ <span th:text="${cart.totalprice}"
-                                 th:name="${cart.totalprice}"></span></div>
+        <div class="sum"><span>¥ <span th:text="${cart.totalprice}"
+                                       th:name="${cart.totalprice}"></span></span></div>
     </div>
 </div>
 <div class="Sub">
