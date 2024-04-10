@@ -1,7 +1,6 @@
 package com.springboot.controller;
 
 import com.springboot.mapper.FunctionMapper;
-import com.springboot.pojo.Cart;
 import com.springboot.pojo.User;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
